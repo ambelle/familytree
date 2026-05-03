@@ -42,7 +42,16 @@
   .badge{pointer-events:auto;background:#ffffffee;border:1px solid #eee0f4;border-radius:999px;padding:9px 12px;font-size:12px;font-weight:900;color:#6b5d75;box-shadow:var(--soft)}
   .zoomBtns{pointer-events:auto;display:flex;gap:7px}
   .zoomBtns button{padding:8px 10px;background:#fff;font-size:12px}
-  .viewport{position:absolute;inset:0;overflow:hidden;padding:62px 18px 18px}
+  .viewport{
+    position:absolute;
+    inset:0;
+    overflow:auto;
+    padding:62px 18px 18px;
+    cursor:grab;
+  }
+  .viewport:active{
+    cursor:grabbing;
+  }
   .fit-layer{position:absolute;left:0;top:0;transform-origin:top left}
   .canvas{position:relative}
   .links{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
@@ -299,8 +308,8 @@ function buildNode(name,depth=0,seen=new Set()){
 }
 
 function measure(n){
-  const gap=72;
-  const leaf=190;
+  const gap=34;
+  const leaf=150;
 
   if(!n.children.length){
     n.w=leaf;
@@ -316,14 +325,14 @@ function measure(n){
 }
 
 function place(n,left,depth){
-  const levelGap=142;
+  const levelGap=120;
   n.x=left+n.w/2;
   n.y=72+depth*levelGap;
 
   let cur=left;
   n.children.forEach(c=>{
     place(c,cur,depth+1);
-    cur+=c.w+72;
+    cur+=c.w+34;
   });
 }
 
@@ -345,8 +354,8 @@ function render(){
   place(root,50,0);
 
   const nodes=flatten(root);
-  const width=Math.max(900,root.w+100);
-  const height=Math.max(620,(maxDepth(root)+1)*142+110);
+  const width=Math.max(760,root.w+80);
+  const height=Math.max(560,(maxDepth(root)+1)*122+100);
 
   els.canvas.style.width=width+'px';
   els.canvas.style.height=height+'px';
@@ -500,9 +509,11 @@ async function loadCharacterData(){
 
     const count = Object.keys(characterData).length;
 
+    const total = allNames().length;
+
     els.status.textContent = updated
-      ? `Character data updated: ${updated} · ${count} loaded`
-      : `Character data loaded · ${count} loaded`;
+      ? `Characters: ${count}/${total} loaded · Updated ${updated}`
+      : `Characters: ${count}/${total} loaded`;
 
   }catch(e){
     characterData={};
@@ -619,6 +630,37 @@ document.getElementById('minus').onclick=()=>{
 els.search.oninput=render;
 window.addEventListener('resize',fitTree);
 
+let isPanning=false;
+let startX=0;
+let startY=0;
+let scrollLeft=0;
+let scrollTop=0;
+
+els.viewport.addEventListener('mousedown',e=>{
+  isPanning=true;
+  startX=e.pageX-els.viewport.offsetLeft;
+  startY=e.pageY-els.viewport.offsetTop;
+  scrollLeft=els.viewport.scrollLeft;
+  scrollTop=els.viewport.scrollTop;
+});
+
+els.viewport.addEventListener('mouseleave',()=>{
+  isPanning=false;
+});
+
+els.viewport.addEventListener('mouseup',()=>{
+  isPanning=false;
+});
+
+els.viewport.addEventListener('mousemove',e=>{
+  if(!isPanning) return;
+  e.preventDefault();
+  const x=e.pageX-els.viewport.offsetLeft;
+  const y=e.pageY-els.viewport.offsetTop;
+  els.viewport.scrollLeft=scrollLeft-(x-startX);
+  els.viewport.scrollTop=scrollTop-(y-startY);
+});
+  
 loadCharacterData();
 </script>
 </body>
