@@ -3,7 +3,7 @@ const https = require("https");
 
 const names = [
   "Thocky","Kaiko","Gillian","Miffyy","Gill","looted","54o88",
-  "Mellowdy","Tock","Gwailou","Rushyy","ggill","Hell","ggil",
+  "Mellowdy","Tock","Gwailou","Rushyy","ggill","HeII","ggil",
   "Tocki","8lo8lo8lowme","Exteriority","sunshines","Tocky","Leaw",
   "mabokdy","scrabbit","Tork","okdy","sunbaedy","Chageee",
   "Arun","Afersie","wookimo","Tokk","Seub","TypeR"
