@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Neko Family Tree</title>
+<style>
+  :root{
+    --ink:#3d3346;--muted:#76697f;--line:#bba7d6;--line2:#dccff0;
+    --page:#f7f0fb;--panel:#fff8fd;--card:#ffffff;--card2:#fbf7ff;
+    --pink:#ffddec;--blue:#dff1ff;--lav:#eee4ff;--mint:#e3fbf2;--peach:#fff0dc;
+    --accent:#d8c1f0;--accent-dark:#8a6bad;--danger:#ffd2d2;--shadow:0 16px 38px rgba(72,54,95,.11);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:var(--page);min-height:100vh;overflow:hidden}
+  header{height:104px;padding:24px 30px 14px;display:flex;justify-content:space-between;gap:16px;align-items:flex-start;background:var(--panel);border-bottom:1px solid #eadff3}
+  h1{font-size:clamp(30px,3.3vw,50px);line-height:1;margin:0 0 8px;font-weight:900;letter-spacing:-.04em}
+  .sub{color:var(--muted);font-size:14px;line-height:1.42;max-width:850px}.pill{background:#fff;border:1px solid #eadff3;border-radius:999px;padding:11px 16px;font-weight:850;color:#72578f;box-shadow:0 8px 18px rgba(72,54,95,.08);white-space:nowrap}
+  .app{height:calc(100vh - 104px);display:grid;grid-template-columns:340px 1fr;gap:16px;padding:16px 22px 22px}.panel{background:var(--panel);border:1px solid #eadff3;border-radius:24px;box-shadow:var(--shadow);padding:18px;overflow:auto}.panel h2{font-size:18px;margin:0 0 12px}.note{font-size:13px;color:var(--muted);line-height:1.45}.divider{height:1px;background:#eadff3;margin:16px 0}.stats{display:flex;flex-wrap:wrap;gap:8px;margin:11px 0}.chip{background:#fff;border:1px solid #eadff3;border-radius:14px;padding:8px 11px;font-weight:850;color:#72578f;font-size:13px}
+  label{display:block;margin:11px 0 6px;font-size:11px;font-weight:900;letter-spacing:.08em;color:#756680;text-transform:uppercase} input,select{width:100%;border:1px solid #e3d7ef;background:#fff;border-radius:14px;padding:12px 13px;font-size:14px;color:var(--ink);outline:none} input:focus,select:focus{border-color:#c3a5df;box-shadow:0 0 0 4px #eee2fb}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}button{border:1px solid #d5c3e8;border-radius:14px;padding:11px 13px;font-weight:900;color:#463650;background:var(--lav);cursor:pointer;box-shadow:0 7px 16px rgba(91,71,130,.08)}button:hover{filter:brightness(.985)}button.secondary{background:#fff}button.danger{background:var(--danger);border-color:#efb7b7}.small{font-size:12px;color:var(--muted);line-height:1.4;margin-top:10px}.tree-wrap{position:relative;background:#fff;border:1px solid #eadff3;border-radius:24px;box-shadow:var(--shadow);overflow:hidden;min-height:0}.fit-area{position:absolute;inset:18px;display:flex;align-items:center;justify-content:center;overflow:hidden}.tree-canvas{position:relative;transform-origin:center center}.links{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}.node{position:absolute;transform:translate(-50%,-50%);width:164px;min-height:92px;border-radius:18px;background:var(--card);display:grid;grid-template-columns:52px 1fr;gap:8px;align-items:center;padding:10px;box-shadow:0 12px 24px rgba(80,65,110,.10);border:1px solid #ece3f5;z-index:2}.node.gen0{background:var(--lav);width:176px}.node:nth-of-type(5n+1){background:#fff8fc}.node:nth-of-type(5n+2){background:#f6fbff}.node:nth-of-type(5n+3){background:#fffdf5}.node:nth-of-type(5n+4){background:#f7fff9}.node:nth-of-type(5n+5){background:#fbf7ff}.avatar{width:52px;height:52px;border-radius:15px;background:#f1e9f9;border:1px solid #e5d8f0;display:flex;align-items:center;justify-content:center;overflow:hidden}.avatar img{max-width:58px;max-height:58px;image-rendering:auto}.avatar .fallback{font-size:22px}.info{min-width:0}.name{font-size:15px;font-weight:950;line-height:1.1;word-break:break-word}.name mark{background:#fff1a8;border-radius:8px;padding:0 2px;color:inherit}.meta{margin-top:6px;font-size:11.5px;line-height:1.25;color:#6d5d77;font-weight:750}.status{font-size:11px;color:#9a8ca5;margin-top:3px}.msg{margin-top:10px;font-size:13px;font-weight:800;color:#7e568c;min-height:18px}.list{font-size:12px;color:var(--muted);line-height:1.45;max-height:120px;overflow:auto;background:#fff;border:1px solid #eadff3;border-radius:14px;padding:10px;margin-top:10px;white-space:pre-wrap}.tools{display:flex;gap:8px;flex-wrap:wrap}.tools button{font-size:12px;padding:9px 10px}.hint{font-size:12px;color:#8b7b96;margin-top:8px;line-height:1.35}
+  @media(max-width:900px){body{overflow:auto}header{height:auto;display:block;padding:22px}.pill{display:inline-block;margin-top:12px}.app{height:auto;grid-template-columns:1fr;padding:14px}.tree-wrap{height:70vh}.panel{max-height:none}}
+</style>
+</head>
+<body>
+<header>
+  <div><h1>Neko Family Tree</h1><div class="sub">Static-fit pastel family tree with character image, job, and level. The layout redraws when you add, clear, or switch juniors.</div></div>
+  <div class="pill">♡ DreamMS family view</div>
+</header>
+<main class="app">
+  <aside class="panel">
+    <h2>Manage Tree</h2><div class="note">Each parent can have up to 2 juniors. Edits save to this device using localStorage. Removed test names disappear from dropdowns automatically.</div>
+    <label>Find name</label><input id="search" placeholder="Search e.g. Gillian" />
+    <div class="stats"><div class="chip" id="peopleCount">0 people</div><div class="chip" id="generationCount">0 generations</div><div class="chip">Root: Thocky</div></div>
+    <div class="divider"></div>
+    <h2>Add / Replace Junior</h2>
+    <label>Parent</label><select id="parentSelect"></select>
+    <div class="row"><div><label>Slot</label><select id="slotSelect"><option value="0">Junior 1</option><option value="1">Junior 2</option></select></div><div><label>Junior name</label><input id="juniorName" placeholder="New junior" /></div></div>
+    <div class="buttons"><button id="saveBtn">Save Junior</button><button class="secondary" id="clearBtn">Clear Slot</button></div>
+    <div class="divider"></div>
+    <h2>Switch Names</h2>
+    <div class="row"><div><label>Name A</label><select id="switchA"></select></div><div><label>Name B</label><select id="switchB"></select></div></div>
+    <div class="buttons"><button id="switchBtn">Switch Names</button><button class="danger" id="resetBtn">Reset Original</button></div>
+    <div class="divider"></div>
+    <h2>Character Info</h2>
+    <div class="note">This tries to load Job, Level, and character image from DreamMS. If DreamMS blocks browser loading, the tree still works and will show placeholders.</div>
+    <div class="tools"><button class="secondary" id="refreshBtn">Refresh DreamMS Info</button><button class="secondary" id="clearCacheBtn">Clear Info Cache</button></div>
+    <div class="hint">Permanent data is still the family links. Character info is auto-fetched and cached in this browser.</div>
+    <div class="divider"></div>
+    <h2>Permanent GitHub Update</h2>
+    <div class="note">Click copy, paste into the DATA section in <b>index.html</b>, then commit in GitHub.</div>
+    <div class="tools"><button class="secondary" id="copyBtn">Copy Family Data</button></div><div class="msg" id="msg"></div><div class="list" id="dataPreview"></div>
+  </aside>
+  <section class="tree-wrap" id="wrap"><div class="fit-area" id="fit"><div class="tree-canvas" id="canvas"><svg class="links" id="links"></svg></div></div></section>
+</main>
+<script>
+const ROOT="Thocky";
+const ORIGINAL_FAMILY={
+  "Thocky":["Kaiko","Gillian"],
+  "Gillian":["Miffyy","Gill"],
+  "Miffyy":["looted","54o88"],
+  "54o88":["Mellowdy","Tock"],
+  "Tock":["Gwailou","Rushyy"],
+  "Gill":["ggill","Hell"],
+  "Hell":["ggil","Tocki"],
+  "ggil":["8lo8lo8lowme","Exteriority"],
+  "Kaiko":["sunshines","Tocky"],
+  "Tocky":["Leaw","mabokdy"],
+  "mabokdy":["scrabbit",null],
+  "Leaw":["Tork","okdy"],
+  "okdy":["sunbaedy",null],
+  "Tork":["Chageee","Arun"],
+  "Chageee":["Afersie",null],
+  "Afersie":["wookimo",null],
+  "Arun":["Tokk","Seub"],
+  "Tokk":["TypeR",null]
+};
+let family=loadFamily();
+let charCache=loadCharCache();
+const els={fit:document.getElementById('fit'),canvas:document.getElementById('canvas'),links:document.getElementById('links'),parentSelect:document.getElementById('parentSelect'),switchA:document.getElementById('switchA'),switchB:document.getElementById('switchB'),slot:document.getElementById('slotSelect'),junior:document.getElementById('juniorName'),search:document.getElementById('search'),people:document.getElementById('peopleCount'),gens:document.getElementById('generationCount'),msg:document.getElementById('msg'),preview:document.getElementById('dataPreview')};
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function loadFamily(){try{return JSON.parse(localStorage.getItem('nekoFamilyV4'))||clone(ORIGINAL_FAMILY)}catch{return clone(ORIGINAL_FAMILY)}}
+function save(){family=pruneFamily(family);localStorage.setItem('nekoFamilyV4',JSON.stringify(family));}
+function loadCharCache(){try{return JSON.parse(localStorage.getItem('nekoCharInfoV1'))||{}}catch{return {}}}
+function saveCharCache(){localStorage.setItem('nekoCharInfoV1',JSON.stringify(charCache));}
+function childrenOf(n){return (family[n]||[]).filter(Boolean);}
+function reachableNames(){const seen=new Set();function walk(n){if(!n||seen.has(n))return;seen.add(n);childrenOf(n).forEach(walk)}walk(ROOT);return [...seen];}
+function allNames(){return reachableNames().sort((a,b)=>a.localeCompare(b));}
+function pruneFamily(obj){const keep=new Set();function walk(n){if(!n||keep.has(n))return;keep.add(n);(obj[n]||[]).filter(Boolean).forEach(walk)}walk(ROOT);const next={};keep.forEach(n=>{const arr=(obj[n]||[]).slice(0,2);next[n]=[arr[0]||null,arr[1]||null];});return next;}
+function buildNode(name,depth=0,seen=new Set()){if(seen.has(name))return {name:name+' ↺',real:name,depth,children:[],cycle:true};seen.add(name);return {name,real:name,depth,children:childrenOf(name).map(c=>buildNode(c,depth+1,new Set(seen)))};}
+function measure(n){const gap=36,leaf=184;if(!n.children.length){n.w=leaf;return n.w;}n.w=Math.max(leaf,n.children.reduce((a,c)=>a+measure(c),0)+gap*(n.children.length-1));return n.w;}
+function place(n,left,depth){const levelGap=126;n.x=left+n.w/2;n.y=62+depth*levelGap;let cur=left;n.children.forEach(c=>{place(c,cur,depth+1);cur+=c.w+36;});}
+function flatten(n,a=[]){a.push(n);n.children.forEach(c=>flatten(c,a));return a;}
+function maxDepth(n){return Math.max(n.depth,...n.children.map(maxDepth),n.depth)}
+function render(){family=pruneFamily(family);const root=buildNode(ROOT);measure(root);place(root,30,0);const nodes=flatten(root);const width=Math.max(900,root.w+80),height=Math.max(620,(maxDepth(root)+1)*126+86);els.canvas.style.width=width+'px';els.canvas.style.height=height+'px';els.links.setAttribute('width',width);els.links.setAttribute('height',height);els.links.innerHTML='';document.querySelectorAll('.node').forEach(n=>n.remove());nodes.forEach(n=>n.children.forEach(c=>drawLink(n,c)));const q=els.search.value.trim().toLowerCase();nodes.forEach(n=>drawNode(n,q));updateControls();els.people.textContent=allNames().length+' people';els.gens.textContent=(maxDepth(root)+1)+' generations';els.preview.textContent=JSON.stringify(family,null,2);requestAnimationFrame(fitTree);}
+function drawLink(a,b){const down=28;const midY=a.y+64;const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',`M ${a.x} ${a.y+46} L ${a.x} ${midY} L ${b.x} ${midY} L ${b.x} ${b.y-46}`);p.setAttribute('fill','none');p.setAttribute('stroke','var(--line)');p.setAttribute('stroke-width','3');p.setAttribute('stroke-linejoin','round');p.setAttribute('stroke-linecap','round');els.links.appendChild(p);const dot=document.createElementNS('http://www.w3.org/2000/svg','circle');dot.setAttribute('cx',b.x);dot.setAttribute('cy',b.y-46);dot.setAttribute('r','4');dot.setAttribute('fill','var(--line)');els.links.appendChild(dot);}
+function drawNode(n,q){const d=document.createElement('div');d.className='node gen'+n.depth;d.style.left=n.x+'px';d.style.top=n.y+'px';const info=charCache[n.real]||{};let name=n.name;if(q&&n.real.toLowerCase().includes(q)){const i=name.toLowerCase().indexOf(q);name=name.slice(0,i)+'<mark>'+name.slice(i,i+q.length)+'</mark>'+name.slice(i+q.length);}const img=info.image?`<img src="${esc(info.image)}" alt="${esc(n.real)}">`:`<span class="fallback">♡</span>`;const meta=info.job||info.level?`${info.job?esc(info.job):'Unknown job'}${info.level?' · Lv. '+esc(info.level):''}`:'Job / level not loaded';d.innerHTML=`<div class="avatar">${img}</div><div class="info"><div class="name">${name}</div><div class="meta">${meta}</div><div class="status">${childrenOf(n.real).length} junior${childrenOf(n.real).length===1?'':'s'}</div></div>`;d.title=childrenOf(n.real).length?n.real+' → '+childrenOf(n.real).join(', '):n.real;els.canvas.appendChild(d);}
+function fitTree(){const fit=els.fit,canvas=els.canvas;if(!fit||!canvas)return;const sx=fit.clientWidth/canvas.offsetWidth,sy=fit.clientHeight/canvas.offsetHeight;const scale=Math.min(sx,sy,1);canvas.style.transform=`scale(${scale})`;}
+function updateControls(){const names=allNames();const opts=names.map(n=>`<option value="${esc(n)}">${esc(n)}</option>`).join('');const prevP=els.parentSelect.value,prevA=els.switchA.value,prevB=els.switchB.value;els.parentSelect.innerHTML=opts;els.switchA.innerHTML='<option value="">— choose —</option>'+opts;els.switchB.innerHTML='<option value="">— choose —</option>'+opts;if(names.includes(prevP))els.parentSelect.value=prevP;if(names.includes(prevA))els.switchA.value=prevA;if(names.includes(prevB))els.switchB.value=prevB;}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+function say(t){els.msg.textContent=t;setTimeout(()=>els.msg.textContent='',3200)}
+function replaceNameEverywhere(a,b){const tmp='__TMP_NAME_'+Date.now()+'__';const swap=x=>x===a?tmp:x===b?a:x===tmp?b:x;const copy={};Object.entries(family).forEach(([p,cs])=>{copy[swap(p)]=(cs||[]).map(swap)});family=copy;}
+async function fetchCharacter(name){const url='https://dreamms.gg/index.php?stats='+encodeURIComponent(name);const sources=[url,'https://api.allorigins.win/raw?url='+encodeURIComponent(url)];let html='';for(const src of sources){try{const res=await fetch(src,{cache:'no-store'});if(res.ok){html=await res.text();if(html&&html.length>300)break;}}catch(e){}}
+  if(!html)throw new Error('Cannot load DreamMS page');
+  const job=(html.match(/<li>\s*Name:\s*[^<]+<\/li>\s*<li>\s*Job:\s*([^<]+)<\/li>/i)||html.match(/Job:\s*([^<\n]+)/i)||[])[1];
+  const level=(html.match(/<li>\s*Level:\s*([0-9]+)/i)||html.match(/Level:\s*([0-9]+)/i)||html.match(/Lv\.\s*([0-9]+)/i)||[])[1];
+  const imgMatch=html.match(/<img[^>]+src=["']([^"']*api\.dreamms\.gg\/api\/gms\/latest\/character[^"']+)["']/i);
+  const image=imgMatch?imgMatch[1].replaceAll('&amp;','&'):'';
+  return {job:job?job.trim():'',level:level?level.trim():'',image,updatedAt:new Date().toISOString()};
+}
+async function refreshAll(){const names=allNames();say('Refreshing DreamMS info...');for(let i=0;i<names.length;i++){const n=names[i];try{charCache[n]=await fetchCharacter(n);say(`Loaded ${i+1}/${names.length}: ${n}`);render();await new Promise(r=>setTimeout(r,180));}catch(e){charCache[n]=charCache[n]||{};charCache[n].error=true;charCache[n].updatedAt=new Date().toISOString();}}
+saveCharCache();render();say('DreamMS refresh done.');}
+document.getElementById('saveBtn').onclick=()=>{const p=els.parentSelect.value,name=els.junior.value.trim(),slot=+els.slot.value;if(!name)return say('Type a junior name first.');family[p]=family[p]||[null,null];family[p][slot]=name;if(!family[name])family[name]=[null,null];save();els.junior.value='';render();say('Saved. Tree redrawn.');};
+document.getElementById('clearBtn').onclick=()=>{const p=els.parentSelect.value,slot=+els.slot.value;family[p]=family[p]||[null,null];family[p][slot]=null;save();render();say('Slot cleared and unused names removed.');};
+document.getElementById('switchBtn').onclick=()=>{const a=els.switchA.value,b=els.switchB.value;if(!a||!b||a===b)return say('Choose two different names.');replaceNameEverywhere(a,b);save();render();say('Names switched.');};
+document.getElementById('resetBtn').onclick=()=>{if(confirm('Reset to the original family tree?')){family=clone(ORIGINAL_FAMILY);save();render();say('Reset done.');}};
+document.getElementById('copyBtn').onclick=async()=>{await navigator.clipboard.writeText('const ORIGINAL_FAMILY = '+JSON.stringify(family,null,2)+';');say('Copied family data.');};
+document.getElementById('refreshBtn').onclick=refreshAll;
+document.getElementById('clearCacheBtn').onclick=()=>{charCache={};saveCharCache();render();say('Character info cache cleared.');};
+els.search.oninput=render;window.addEventListener('resize',fitTree);render();
+</script>
+</body>
+</html>
