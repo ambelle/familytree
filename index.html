@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Neko Family Tree</title>
+<style>
+  :root{
+    --ink:#392f42;--muted:#7a6b87;--line:#cdb8f0;--card:#ffffffd9;
+    --pink:#ffe6f1;--blue:#e7f3ff;--lav:#efe7ff;--mint:#eafff7;--peach:#fff0df;
+    --accent:#dcb8ff;--accent2:#b9e5ff;--shadow:0 14px 35px rgba(70,54,95,.10);
+  }
+  *{box-sizing:border-box} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:linear-gradient(135deg,var(--pink),var(--blue));min-height:100vh}
+  header{padding:28px 34px 18px;display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+  h1{font-size:clamp(34px,4vw,58px);line-height:1;margin:0 0 8px;font-weight:900;letter-spacing:-.04em}
+  .sub{color:var(--muted);font-size:16px;line-height:1.45;max-width:760px}.pill{background:#ffffffb8;border:1px solid #fff;border-radius:999px;padding:12px 18px;font-weight:800;color:#6d4c88;box-shadow:var(--shadow);white-space:nowrap}
+  .app{display:grid;grid-template-columns:340px 1fr;gap:18px;padding:0 34px 34px}.panel{background:#ffffffb5;backdrop-filter:blur(12px);border:1px solid #fff;border-radius:24px;box-shadow:var(--shadow);padding:20px;max-height:calc(100vh - 145px);overflow:auto}.panel h2{font-size:19px;margin:0 0 14px}.note{font-size:13px;color:var(--muted);line-height:1.45}.divider{height:1px;background:#eadcf7;margin:18px 0}.stats{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.chip{background:#fff;border:1px solid #eadcf7;border-radius:14px;padding:9px 12px;font-weight:800;color:#6a4c88}
+  label{display:block;margin:12px 0 6px;font-size:12px;font-weight:900;letter-spacing:.08em;color:#756680;text-transform:uppercase} input,select{width:100%;border:1px solid #e7d9f5;background:#fff;border-radius:14px;padding:13px 14px;font-size:15px;color:var(--ink);outline:none} input:focus,select:focus{border-color:#c9a6ee;box-shadow:0 0 0 4px #ead7ff}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}button{border:0;border-radius:14px;padding:12px 14px;font-weight:900;color:#463650;background:linear-gradient(135deg,var(--accent),var(--accent2));cursor:pointer;box-shadow:0 8px 20px rgba(91,71,130,.12)}button.secondary{background:#fff;border:1px solid #e7d9f5}button.danger{background:linear-gradient(135deg,#ffd1dc,#ffcfcf)}.small{font-size:12px;color:var(--muted);line-height:1.4;margin-top:10px}.tree-wrap{position:relative;background:#ffffff99;border:1px solid #fff;border-radius:24px;box-shadow:var(--shadow);overflow:auto;min-height:720px}.tree-canvas{position:relative;min-width:1100px;min-height:680px;padding:42px}.links{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}.node{position:absolute;transform:translate(-50%,-50%);width:132px;min-height:54px;border-radius:18px;background:#fff;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px 12px;font-weight:900;box-shadow:0 16px 28px rgba(80,65,110,.10);border:1px solid #fff;z-index:2}.node.gen0{background:linear-gradient(135deg,#ead7ff,#bde8ff);width:144px}.node:nth-of-type(5n+1){background:#fff8fc}.node:nth-of-type(5n+2){background:#f6fbff}.node:nth-of-type(5n+3){background:#fffdf5}.node:nth-of-type(5n+4){background:#f7fff9}.node:nth-of-type(5n+5){background:#fbf7ff}.node mark{background:#fff1a8;border-radius:8px;padding:0 2px;color:inherit}.msg{margin-top:10px;font-size:13px;font-weight:800;color:#7e568c;min-height:18px}.list{font-size:13px;color:var(--muted);line-height:1.5;max-height:160px;overflow:auto;background:#fff;border:1px solid #eadcf7;border-radius:14px;padding:10px;margin-top:10px;white-space:pre-wrap}.tools{display:flex;gap:8px;flex-wrap:wrap}.tools button{font-size:12px;padding:9px 10px}
+  @media(max-width:900px){header{display:block;padding:22px}.pill{display:inline-block;margin-top:14px}.app{grid-template-columns:1fr;padding:0 18px 22px}.panel{max-height:none}.tree-wrap{min-height:620px}.tree-canvas{padding:28px}}
+</style>
+</head>
+<body>
+<header>
+  <div><h1>Neko Family Tree</h1><div class="sub">Soft pastel GitHub Pages family tree. The tree uses proper parent → child layout and automatically redraws whenever you add, replace, or switch juniors.</div></div>
+  <div class="pill">♡ Auto-layout family view</div>
+</header>
+<main class="app">
+  <aside class="panel">
+    <h2>Manage Tree</h2><div class="note">Each parent can have up to 2 juniors. Browser edits save to this device using localStorage.</div>
+    <label>Find name</label><input id="search" placeholder="Search e.g. Gillian" />
+    <div class="stats"><div class="chip" id="peopleCount">0 people</div><div class="chip" id="generationCount">0 generations</div><div class="chip">Root: Thocky</div></div>
+    <div class="divider"></div>
+    <h2>Add / Replace Junior</h2>
+    <label>Parent</label><select id="parentSelect"></select>
+    <div class="row"><div><label>Slot</label><select id="slotSelect"><option value="0">Junior 1</option><option value="1">Junior 2</option></select></div><div><label>Junior name</label><input id="juniorName" placeholder="New junior" /></div></div>
+    <div class="buttons"><button id="saveBtn">Save Junior</button><button class="secondary" id="clearBtn">Clear Slot</button></div>
+    <div class="divider"></div>
+    <h2>Switch Juniors</h2>
+    <div class="row"><div><label>Name A</label><select id="switchA"></select></div><div><label>Name B</label><select id="switchB"></select></div></div>
+    <div class="buttons"><button id="switchBtn">Switch Names</button><button class="danger" id="resetBtn">Reset Original</button></div>
+    <div class="divider"></div>
+    <h2>Permanent GitHub Update</h2>
+    <div class="note">Edits here are not pushed to GitHub automatically. Click copy, then paste into the DATA section in <b>index.html</b> and commit.</div>
+    <div class="tools"><button class="secondary" id="copyBtn">Copy Family Data</button></div><div class="msg" id="msg"></div><div class="list" id="dataPreview"></div>
+  </aside>
+  <section class="tree-wrap" id="wrap"><div class="tree-canvas" id="canvas"><svg class="links" id="links"></svg></div></section>
+</main>
+<script>
+const ROOT="Thocky";
+const ORIGINAL_FAMILY={
+  "Thocky":["Kaiko","Gillian"],
+  "Gillian":["Miffyy","Gill"],
+  "Miffyy":["looted","54o88"],
+  "54o88":["Mellowdy","Tock"],
+  "Tock":["Gwailou","Rushyy"],
+  "Gill":["ggill","Hell"],
+  "Hell":["ggil","Tocki"],
+  "ggil":["8lo8lo8lowme","Exteriority"],
+  "Kaiko":["sunshines","Tocky"],
+  "Tocky":["Leaw","mabokdy"],
+  "mabokdy":["scrabbit",null],
+  "Leaw":["Tork","okdy"],
+  "okdy":["sunbaedy",null],
+  "Tork":["Chageee","Arun"],
+  "Chageee":["Afersie",null],
+  "Afersie":["wookimo",null],
+  "Arun":["Tokk","Seub"],
+  "Tokk":["TypeR",null]
+};
+let family=loadFamily();
+const els={canvas:document.getElementById('canvas'),links:document.getElementById('links'),parentSelect:document.getElementById('parentSelect'),switchA:document.getElementById('switchA'),switchB:document.getElementById('switchB'),slot:document.getElementById('slotSelect'),junior:document.getElementById('juniorName'),search:document.getElementById('search'),people:document.getElementById('peopleCount'),gens:document.getElementById('generationCount'),msg:document.getElementById('msg'),preview:document.getElementById('dataPreview')};
+function loadFamily(){try{return JSON.parse(localStorage.getItem('nekoFamilyV2'))||structuredClone(ORIGINAL_FAMILY)}catch{return structuredClone(ORIGINAL_FAMILY)}}
+function save(){localStorage.setItem('nekoFamilyV2',JSON.stringify(family));}
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function childrenOf(n){return (family[n]||[]).filter(Boolean);}
+function allNames(){const s=new Set([ROOT]);Object.entries(family).forEach(([p,cs])=>{s.add(p);(cs||[]).forEach(c=>c&&s.add(c));});return [...s].sort((a,b)=>a.localeCompare(b));}
+function buildNode(name,depth=0,seen=new Set()){ if(seen.has(name)) return {name:name+' ↺',real:name,depth,children:[],cycle:true}; seen.add(name); return {name,real:name,depth,children:childrenOf(name).map(c=>buildNode(c,depth+1,new Set(seen)))}; }
+function measure(n){ const gap=54, leaf=150; if(!n.children.length){n.w=leaf;return n.w;} n.w=Math.max(leaf,n.children.reduce((a,c)=>a+measure(c),0)+gap*(n.children.length-1)); return n.w; }
+function place(n,left,depth){ const levelGap=112; n.x=left+n.w/2; n.y=50+depth*levelGap; let cur=left; n.children.forEach(c=>{place(c,cur,depth+1);cur+=c.w+54;}); }
+function flatten(n,a=[]){a.push(n);n.children.forEach(c=>flatten(c,a));return a;}
+function maxDepth(n){return Math.max(n.depth,...n.children.map(maxDepth),n.depth)}
+function render(){ const root=buildNode(ROOT); measure(root); place(root,40,0); const nodes=flatten(root); const width=Math.max(1100,root.w+120), height=Math.max(680,(maxDepth(root)+1)*112+120); els.canvas.style.width=width+'px'; els.canvas.style.height=height+'px'; els.links.setAttribute('width',width);els.links.setAttribute('height',height); els.links.innerHTML=''; document.querySelectorAll('.node').forEach(n=>n.remove()); nodes.forEach(n=>{n.children.forEach(c=>drawLink(n,c));}); const q=els.search.value.trim().toLowerCase(); nodes.forEach(n=>drawNode(n,q)); updateControls(); els.people.textContent=allNames().length+' people'; els.gens.textContent=(maxDepth(root)+1)+' generations'; els.preview.textContent=JSON.stringify(family,null,2); }
+function drawLink(a,b){ const p=document.createElementNS('http://www.w3.org/2000/svg','path'); const y1=a.y+27,y2=b.y-27,mid=(y1+y2)/2; p.setAttribute('d',`M ${a.x} ${y1} C ${a.x} ${mid}, ${b.x} ${mid}, ${b.x} ${y2}`); p.setAttribute('fill','none'); p.setAttribute('stroke','var(--line)'); p.setAttribute('stroke-width','3'); p.setAttribute('stroke-linecap','round'); els.links.appendChild(p); }
+function drawNode(n,q){ const d=document.createElement('div'); d.className='node gen'+n.depth; d.style.left=n.x+'px'; d.style.top=n.y+'px'; let text=n.name; if(q&&n.real.toLowerCase().includes(q)){const i=text.toLowerCase().indexOf(q); text=text.slice(0,i)+'<mark>'+text.slice(i,i+q.length)+'</mark>'+text.slice(i+q.length);} d.innerHTML=text; d.title=childrenOf(n.real).length? n.real+' → '+childrenOf(n.real).join(', '):n.real; els.canvas.appendChild(d); }
+function updateControls(){ const names=allNames(); const opts=names.map(n=>`<option value="${esc(n)}">${esc(n)}</option>`).join(''); const prevP=els.parentSelect.value, prevA=els.switchA.value, prevB=els.switchB.value; els.parentSelect.innerHTML=opts; els.switchA.innerHTML='<option value="">— choose —</option>'+opts; els.switchB.innerHTML='<option value="">— choose —</option>'+opts; if(names.includes(prevP))els.parentSelect.value=prevP; if(names.includes(prevA))els.switchA.value=prevA; if(names.includes(prevB))els.switchB.value=prevB; }
+function esc(s){return String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
+function say(t){els.msg.textContent=t;setTimeout(()=>els.msg.textContent='',2600)}
+document.getElementById('saveBtn').onclick=()=>{const p=els.parentSelect.value, name=els.junior.value.trim(), slot=+els.slot.value;if(!name)return say('Type a junior name first.');family[p]=family[p]||[null,null];family[p][slot]=name;if(!family[name])family[name]=family[name]||[];save();els.junior.value='';render();say('Saved. Tree redrawn.');};
+document.getElementById('clearBtn').onclick=()=>{const p=els.parentSelect.value, slot=+els.slot.value;family[p]=family[p]||[null,null];family[p][slot]=null;save();render();say('Slot cleared.');};
+document.getElementById('switchBtn').onclick=()=>{const a=els.switchA.value,b=els.switchB.value;if(!a||!b||a===b)return say('Choose two different names.');const txt=JSON.stringify(family);family=JSON.parse(txt.replaceAll(JSON.stringify(a).slice(1,-1),'__TMP__').replaceAll(JSON.stringify(b).slice(1,-1),a).replaceAll('__TMP__',b));save();render();say('Names switched.');};
+document.getElementById('resetBtn').onclick=()=>{if(confirm('Reset to the original family tree?')){family=clone(ORIGINAL_FAMILY);save();render();say('Reset done.');}};
+document.getElementById('copyBtn').onclick=async()=>{await navigator.clipboard.writeText('const ORIGINAL_FAMILY = '+JSON.stringify(family,null,2)+';');say('Copied family data.');};
+els.search.oninput=render; render();
+</script>
+</body>
+</html>
