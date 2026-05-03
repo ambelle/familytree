@@ -1,45 +1,55 @@
 const fs = require("fs");
-const fetch = require("node-fetch");
 
-const family = require("../characters.json");
+const names = [
+  "Thocky","Kaiko","Gillian","Miffyy","Gill","looted","54o88",
+  "Mellowdy","Tock","Gwailou","Rushyy","ggill","Hell","ggil",
+  "Tocki","8lo8lo8lowme","Exteriority","sunshines","Tocky",
+  "Leaw","mabokdy","scrabbit","Tork","okdy","sunbaedy",
+  "Chageee","Arun","Afersie","wookimo","Tokk","Seub","TypeR"
+];
 
 async function fetchCharacter(name) {
   try {
-    const res = await fetch(`https://dreamms.gg/index.php?stats=${name}`);
-    const text = await res.text();
+    const url = `https://dreamms.gg/index.php?stats=${encodeURIComponent(name)}`;
+    const res = await fetch(url);
+    const html = await res.text();
 
-    // Extract job
-    const jobMatch = text.match(/Job<\/td>\s*<td>(.*?)<\/td>/);
-    const job = jobMatch ? jobMatch[1] : "Unknown";
+    const text = html.replace(/\s+/g, " ");
 
-    // Extract level
-    const levelMatch = text.match(/Level<\/td>\s*<td>(.*?)<\/td>/);
-    const level = levelMatch ? levelMatch[1] : "Unknown";
+    const jobMatch = text.match(/Job<\/[^>]+>\s*<[^>]+>(.*?)<\/[^>]+>/i);
+    const levelMatch = text.match(/Level<\/[^>]+>\s*<[^>]+>(.*?)<\/[^>]+>/i);
+    const imgMatch = html.match(/<img[^>]+src="(https:\/\/api\.dreamms\.gg\/api\/gms\/latest\/character\/[^"]+)"/i);
 
-    // Extract image
-    const imgMatch = text.match(/<img src="(https:\/\/api\.dreamms\.gg[^"]+)"/);
-    const image = imgMatch ? imgMatch[1].replace(/&amp;/g, "&") : "";
-
-    return { job, level, image };
-  } catch (e) {
-    console.log("Error fetching:", name);
-    return { job: "Error", level: "-", image: "" };
+    return {
+      job: jobMatch ? clean(jobMatch[1]) : "",
+      level: levelMatch ? clean(levelMatch[1]) : "",
+      image: imgMatch ? imgMatch[1].replaceAll("&amp;", "&") : ""
+    };
+  } catch (err) {
+    console.log(`Failed: ${name}`, err.message);
+    return {
+      job: "",
+      level: "",
+      image: ""
+    };
   }
 }
 
+function clean(value) {
+  return value.replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ").trim();
+}
+
 async function main() {
-  const names = Object.keys(family);
   const result = {};
 
   for (const name of names) {
-    console.log("Fetching:", name);
+    console.log("Fetching", name);
     result[name] = await fetchCharacter(name);
+    await new Promise(resolve => setTimeout(resolve, 500));
   }
 
-  fs.writeFileSync(
-    "characters.json",
-    JSON.stringify(result, null, 2)
-  );
+  fs.writeFileSync("characters.json", JSON.stringify(result, null, 2));
+  console.log("characters.json updated");
 }
 
 main();
