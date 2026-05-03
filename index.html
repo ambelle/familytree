@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Neko Family Tree</title>
+  <style>
+    :root{
+      --bg1:#fff7fb; --bg2:#f1f7ff; --card:#ffffffcc; --ink:#3d3446; --muted:#7b7086;
+      --line:#d7c6ee; --accent:#d8b4fe; --accent2:#bae6fd; --accent3:#fecdd3;
+      --shadow:0 14px 40px rgba(116,82,145,.13); --radius:22px;
+    }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);
+      background: radial-gradient(circle at 10% 10%, #ffe4ef 0 18%, transparent 36%), radial-gradient(circle at 90% 0%, #dbeafe 0 16%, transparent 34%), linear-gradient(135deg,var(--bg1),var(--bg2));}
+    header{padding:28px clamp(16px,3vw,42px) 12px;display:flex;gap:16px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+    h1{margin:0;font-size:clamp(28px,5vw,54px);letter-spacing:-.05em;line-height:.95}.sub{margin:10px 0 0;color:var(--muted);max-width:720px;line-height:1.5}
+    .pill{display:inline-flex;gap:8px;align-items:center;background:#ffffffb8;border:1px solid #fff;padding:10px 14px;border-radius:999px;box-shadow:var(--shadow);font-weight:700;color:#6b4b86}
+    .layout{display:grid;grid-template-columns:minmax(300px,380px) 1fr;gap:18px;padding:12px clamp(16px,3vw,42px) 32px;height:calc(100% - 110px)}
+    aside,.stage{background:#ffffff9c;border:1px solid #fff;border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:blur(18px)}
+    aside{padding:18px;overflow:auto}.stage{position:relative;overflow:auto;padding:30px;min-height:520px}
+    .panel-title{font-weight:900;margin:0 0 10px;font-size:18px}.hint{font-size:13px;color:var(--muted);line-height:1.45;margin:0 0 16px}
+    label{display:block;font-size:12px;font-weight:800;color:#6f617a;margin:12px 0 6px;text-transform:uppercase;letter-spacing:.08em}
+    input,select,textarea{width:100%;border:1px solid #eadff5;background:#fff;border-radius:14px;padding:11px 12px;font:inherit;color:var(--ink);outline:none}
+    textarea{min-height:118px;resize:vertical;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px}
+    input:focus,select:focus,textarea:focus{border-color:#c084fc;box-shadow:0 0 0 4px #e9d5ff80}
+    button{border:0;border-radius:14px;padding:11px 14px;font-weight:900;color:#4a375f;cursor:pointer;background:linear-gradient(135deg,#fbcfe8,#bfdbfe);box-shadow:0 10px 22px rgba(148,105,180,.15)}
+    button.secondary{background:#fff;color:#65586f;border:1px solid #eadff5;box-shadow:none}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}hr{border:0;border-top:1px solid #efe5f7;margin:20px 0}
+    .tree{display:flex;justify-content:center;min-width:max-content;padding:20px 18px 40px}.node{text-align:center;position:relative;padding:0 8px}.person{display:inline-flex;align-items:center;justify-content:center;min-width:118px;max-width:160px;min-height:54px;padding:12px 16px;border-radius:20px;background:linear-gradient(135deg,#fff,#fff7fb);border:1px solid #fff;box-shadow:0 10px 24px rgba(107,70,132,.12);font-weight:900;position:relative;z-index:2;white-space:normal;word-break:break-word}.person.root{background:linear-gradient(135deg,#f5d0fe,#bae6fd);font-size:18px}.children{display:flex;justify-content:center;gap:22px;margin-top:44px;position:relative}.children:before{content:"";position:absolute;top:-22px;left:50%;height:22px;border-left:2px solid var(--line)}.child:before{content:"";position:absolute;top:-22px;left:50%;height:22px;border-left:2px solid var(--line)}.children:after{content:"";position:absolute;top:-22px;left:calc(50% - var(--half, 0px));right:calc(50% - var(--half, 0px));border-top:2px solid var(--line)}.leaf .person{background:linear-gradient(135deg,#fff,#f0f9ff)}
+    .stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.stat{background:#fff;border:1px solid #efe5f7;border-radius:16px;padding:10px 12px;font-weight:800;color:#6b4b86}.small{font-size:12px;color:var(--muted);margin-top:8px}.danger{background:linear-gradient(135deg,#fecdd3,#fed7aa)}
+    .searchbox{position:sticky;top:0;background:#ffffffd9;backdrop-filter:blur(10px);padding-bottom:8px;z-index:5}.highlight>.person{outline:4px solid #f0abfc;box-shadow:0 0 0 8px #f5d0fe80,0 12px 26px rgba(107,70,132,.16)}
+    @media(max-width:900px){.layout{grid-template-columns:1fr;height:auto}.stage{min-height:540px}header{padding-top:20px}}
+  </style>
+</head>
+<body>
+<header>
+  <div><h1>Neko Family Tree</h1><p class="sub">A soft pastel GitHub Pages family tree. Add or switch juniors anytime; the tree saves in your browser and redraws automatically.</p></div>
+  <div class="pill">♡ Auto-layout family view</div>
+</header>
+<main class="layout">
+  <aside>
+    <div class="searchbox">
+      <p class="panel-title">Manage Tree</p>
+      <p class="hint">Each parent can have up to 2 juniors. Changes save to this browser using localStorage.</p>
+      <label>Find name</label><input id="search" placeholder="Search e.g. Gillian" />
+    </div>
+
+    <div class="stats" id="stats"></div>
+    <hr />
+
+    <p class="panel-title">Add / Replace Junior</p>
+    <label>Parent</label><select id="parentSelect"></select>
+    <div class="row">
+      <div><label>Slot</label><select id="slot"><option value="0">Junior 1</option><option value="1">Junior 2</option></select></div>
+      <div><label>Junior name</label><input id="juniorName" placeholder="New junior" /></div>
+    </div>
+    <div class="actions"><button id="addBtn">Save Junior</button><button class="secondary" id="clearBtn">Clear Slot</button></div>
+
+    <hr />
+    <p class="panel-title">Switch Juniors</p>
+    <div class="row"><div><label>Name A</label><select id="switchA"></select></div><div><label>Name B</label><select id="switchB"></select></div></div>
+    <div class="actions"><button id="switchBtn">Switch Places</button></div>
+
+    <hr />
+    <p class="panel-title">Backup / Edit Data</p>
+    <p class="hint">Copy this JSON into your GitHub file if you want the website’s default data updated permanently.</p>
+    <textarea id="jsonBox"></textarea>
+    <div class="actions"><button class="secondary" id="exportBtn">Refresh JSON</button><button class="secondary" id="importBtn">Load JSON</button><button class="danger" id="resetBtn">Reset</button></div>
+    <p class="small">Tip: on GitHub Pages, browser edits are personal. To make edits permanent for everyone, update the default data in this file.</p>
+  </aside>
+
+  <section class="stage"><div id="tree" class="tree"></div></section>
+</main>
+<script>
+const DEFAULT_TREE = {
+  name: "Thocky",
+  children: [
+    { name: "Kaiko", children: [
+      { name: "sunshines", children: [] },
+      { name: "Tocky", children: [
+        { name: "Leaw", children: [
+          { name: "Tork", children: [
+            { name: "Chageee", children: [
+              { name: "Afersie", children: [
+                { name: "wookimo", children: [] }, null
+              ] }, null
+            ] },
+            { name: "Arun", children: [
+              { name: "Tokk", children: [
+                { name: "TypeR", children: [] }, null
+              ] },
+              { name: "Seub", children: [] }
+            ] }
+          ] },
+          { name: "okdy", children: [
+            { name: "sunbaedy", children: [] }, null
+          ] }
+        ] },
+        { name: "mabokdy", children: [
+          { name: "scrabbit", children: [] }, null
+        ] }
+      ] }
+    ] },
+    { name: "Gillian", children: [
+      { name: "Miffyy", children: [
+        { name: "looted", children: [] },
+        { name: "54o88", children: [
+          { name: "Mellowdy", children: [] },
+          { name: "Tock", children: [
+            { name: "Gwailou", children: [] },
+            { name: "Rushyy", children: [] }
+          ] }
+        ] }
+      ] },
+      { name: "Gill", children: [
+        { name: "ggill", children: [] },
+        { name: "Hell", children: [
+          { name: "ggil", children: [
+            { name: "8lo8lo8lowme", children: [] },
+            { name: "Exteriority", children: [] }
+          ] },
+          { name: "Tocki", children: [] }
+        ] }
+      ] }
+    ] }
+  ]
+};
+const STORAGE_KEY = "nekoFamilyTree.v1";
+let tree = loadTree();
+function clone(x){ return JSON.parse(JSON.stringify(x)); }
+function normalise(node){ if(!node) return null; node.children = (node.children || []).slice(0,2); while(node.children.length < 2) node.children.push(null); node.children = node.children.map(normalise); return node; }
+function compact(node){ if(!node) return null; const kids=(node.children||[]).map(compact); while(kids.length && !kids[kids.length-1]) kids.pop(); return {name:node.name, children:kids}; }
+function loadTree(){ try{ const saved=localStorage.getItem(STORAGE_KEY); return normalise(saved ? JSON.parse(saved) : clone(DEFAULT_TREE)); }catch(e){ return normalise(clone(DEFAULT_TREE)); }}
+function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(compact(tree), null, 2)); }
+function walk(node, cb, path=[]){ if(!node) return; cb(node,path); (node.children||[]).forEach((c,i)=>walk(c,cb,path.concat(i))); }
+function getByPath(path){ return path.reduce((n,i)=>n && n.children[i], tree); }
+function allPeople(){ const arr=[]; walk(tree,(n,p)=>arr.push({name:n.name,path:p.join('.')})); return arr; }
+function maxDepth(node){ if(!node) return 0; return 1+Math.max(0,...(node.children||[]).map(maxDepth)); }
+function countPeople(){ let n=0; walk(tree,()=>n++); return n; }
+function renderNode(node, isRoot=false){ if(!node) return ""; const kids=(node.children||[]).filter(Boolean); const leaf=kids.length===0; return `<div class="node child ${leaf?'leaf':''}" data-name="${esc(node.name).toLowerCase()}"><div class="person ${isRoot?'root':''}">${esc(node.name)}</div>${kids.length?`<div class="children">${kids.map(k=>renderNode(k)).join('')}</div>`:''}</div>`; }
+function esc(s){ return String(s).replace(/[&<>'"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[m])); }
+function fillSelect(sel, people, includeEmpty=false){ const current=sel.value; sel.innerHTML = includeEmpty?'<option value="">— choose —</option>':''; people.forEach(p=>{ const o=document.createElement('option'); o.value=p.path; o.textContent=p.name; sel.appendChild(o); }); if([...sel.options].some(o=>o.value===current)) sel.value=current; }
+function render(){
+  document.getElementById('tree').innerHTML = renderNode(tree,true);
+  const people=allPeople(); fillSelect(parentSelect, people); fillSelect(switchA, people, true); fillSelect(switchB, people, true);
+  stats.innerHTML = `<div class="stat">${countPeople()} people</div><div class="stat">${maxDepth(tree)} generations</div><div class="stat">Root: ${esc(tree.name)}</div>`;
+  jsonBox.value = JSON.stringify(compact(tree), null, 2); searchNow(); save();
+}
+function searchNow(){ const q=search.value.trim().toLowerCase(); document.querySelectorAll('.node').forEach(n=>n.classList.toggle('highlight', q && n.dataset.name.includes(q))); }
+addBtn.onclick=()=>{ const parent=getByPath(parentSelect.value.split('.').filter(Boolean).map(Number)); const idx=Number(slot.value); const name=juniorName.value.trim(); if(!parent||!name) return alert('Choose a parent and enter a junior name.'); parent.children ||= [null,null]; while(parent.children.length<2) parent.children.push(null); parent.children[idx]=normalise({name, children: parent.children[idx]?.children || []}); juniorName.value=''; render(); };
+clearBtn.onclick=()=>{ const parent=getByPath(parentSelect.value.split('.').filter(Boolean).map(Number)); if(parent){ parent.children[Number(slot.value)]=null; render(); }};
+switchBtn.onclick=()=>{ if(!switchA.value||!switchB.value||switchA.value===switchB.value) return alert('Choose two different people.'); const pa=switchA.value.split('.').filter(Boolean).map(Number); const pb=switchB.value.split('.').filter(Boolean).map(Number); const parentA=getByPath(pa.slice(0,-1)); const parentB=getByPath(pb.slice(0,-1)); const ia=pa[pa.length-1], ib=pb[pb.length-1]; if(pa.length===0||pb.length===0) return alert('Root cannot be switched.'); [parentA.children[ia], parentB.children[ib]]=[parentB.children[ib], parentA.children[ia]]; render(); };
+exportBtn.onclick=()=>jsonBox.value=JSON.stringify(compact(tree), null, 2);
+importBtn.onclick=()=>{ try{ tree=normalise(JSON.parse(jsonBox.value)); render(); }catch(e){ alert('Invalid JSON.'); }};
+resetBtn.onclick=()=>{ if(confirm('Reset back to original tree?')){ localStorage.removeItem(STORAGE_KEY); tree=normalise(clone(DEFAULT_TREE)); render(); }};
+search.oninput=searchNow; render();
+</script>
+</body>
+</html>
