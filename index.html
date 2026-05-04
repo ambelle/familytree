@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Neko Family Tree</title>
+<style>
+  :root{
+    --ink:#2f2940;--muted:#766b86;--page:#fbf7ff;--panel:#ffffff;
+    --line:#c6aef0;--lineSoft:#eadfff;--lav:#efe7ff;--pink:#ffe8f3;--blue:#eaf6ff;--mint:#eafff5;--cream:#fff9ed;
+    --purple:#d8c4ff;--rose:#ffd6e6;--sky:#cfeeff;--green:#d9f7e8;--yellow:#fff1bd;
+    --danger:#ff6b6b;--warn:#f2b94b;--ok:#67c587;--missing:#a8a0b6;
+    --shadow:0 18px 44px rgba(66,48,95,.14);--soft:0 8px 20px rgba(66,48,95,.10);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:var(--page);overflow:hidden}
+  header{height:74px;padding:14px 18px;display:flex;align-items:center;background:#fff8fc;border-bottom:1px solid #f0dfef}
+  h1{margin:0;font-size:clamp(28px,3vw,42px);letter-spacing:-.04em;line-height:1;font-weight:950}
+  .sub{margin-top:5px;color:var(--muted);font-size:12.5px}
+  .app{height:calc(100vh - 74px);display:grid;grid-template-columns:260px 1fr;gap:10px;padding:10px}
+  .panel{background:var(--panel);border:1px solid #f1e4f5;border-radius:20px;box-shadow:var(--shadow);padding:12px;overflow:auto}
+  .panel h2{font-size:15px;margin:0 0 8px}.note{font-size:11.5px;color:var(--muted);line-height:1.38}.divider{height:1px;background:#f0e3f5;margin:12px 0}
+  .stats{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0}.chip{background:var(--lav);border:1px solid #e3d6ff;border-radius:12px;padding:7px 8px;font-weight:900;font-size:11px;color:#6a5186}.chip.blue{background:var(--blue);border-color:#cfeaff}.chip.pink{background:var(--pink);border-color:#ffd0e4}
+  label{display:block;margin:7px 0 4px;font-size:10px;font-weight:950;letter-spacing:.08em;color:#7b6f83;text-transform:uppercase}input,select{width:100%;border:1px solid #e7d9f5;background:#fff;border-radius:12px;padding:9px 10px;font-size:12.5px;color:var(--ink);outline:none}input:focus,select:focus{border-color:#bfa7e8;box-shadow:0 0 0 3px #efe7ff}.row{display:grid;grid-template-columns:1fr 1fr;gap:7px}.buttons,.tools{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}button{border:1px solid #dccdf0;border-radius:12px;padding:9px 10px;font-weight:950;color:#453450;background:var(--purple);cursor:pointer;box-shadow:var(--soft)}button.secondary{background:#fff}button.danger{background:#ffd6dc;border-color:#ffc2cb}.msg{margin-top:8px;font-size:12px;font-weight:900;color:#7e568c;min-height:16px}.list{font-size:11px;color:var(--muted);line-height:1.38;max-height:126px;overflow:auto;background:#fff;border:1px solid #eadcf7;border-radius:12px;padding:9px;margin-top:8px;white-space:pre-wrap}.levelBox{max-height:150px}.levelGood{border-color:#bfe9cf;background:#f4fff8;color:#447a55}.levelWarn{border-color:#ffe2a0;background:#fffaf0;color:#805d17}.levelBad{border-color:#ffc1c1;background:#fff6f6;color:#914343}
+  .tree-stage{position:relative;background:#fff;border:1px solid #f1e4f5;border-radius:22px;box-shadow:var(--shadow);overflow:hidden;height:100%;min-width:0}
+  .tree-toolbar{position:absolute;top:12px;left:12px;right:12px;z-index:5;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;pointer-events:none}.badge{pointer-events:auto;background:#ffffffee;border:1px solid #eee0f4;border-radius:999px;padding:9px 12px;font-size:12px;font-weight:900;color:#6b5d75;box-shadow:var(--soft)}.zoomBtns{pointer-events:auto;display:flex;gap:7px}.zoomBtns button{padding:8px 10px;background:#fff;font-size:12px}.viewport{position:absolute;inset:0;overflow:hidden;cursor:grab;background:radial-gradient(circle at center,#fff 0,#fff 52%,#fbf8ff 100%)}.viewport:active{cursor:grabbing}.fit-layer{position:absolute;left:0;top:0;transform-origin:top left}.canvas{position:relative}.links,.rings{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}.node{position:absolute;transform:translate(-50%,-50%);width:126px;min-height:92px;border-radius:20px;background:var(--card,#fff);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8px 8px 9px;font-weight:950;box-shadow:0 15px 28px rgba(73,59,99,.12);border:1.5px solid #eee1f6;z-index:2;user-select:none;cursor:pointer;transition:transform .16s ease, box-shadow .16s ease, border .16s ease}.node:hover{transform:translate(-50%,-50%) scale(1.08);box-shadow:0 18px 35px rgba(73,59,99,.18);z-index:6}.node.gen0{width:150px;min-height:112px;background:var(--lav);border-color:#c9b1ff}.node:nth-of-type(5n+1){background:#fff8fc}.node:nth-of-type(5n+2){background:#f6fbff}.node:nth-of-type(5n+3){background:#fffdf5}.node:nth-of-type(5n+4){background:#f7fff9}.node:nth-of-type(5n+5){background:#fbf7ff}.avatarWrap{width:52px;height:52px;border-radius:16px;background:#fff;border:1px solid #eee1f6;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:4px}.node.gen0 .avatarWrap{width:64px;height:64px}.avatar{max-width:64px;max-height:64px;object-fit:contain;image-rendering:auto}.placeholder{font-size:22px}.name{font-size:16px;line-height:1.05;max-width:112px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.node.gen0 .name{font-size:17px}.meta{margin-top:4px;font-size:10px;color:#725f7d;font-weight:850;line-height:1.15}.node.warn-red{border:2.5px solid var(--danger);background:#fff2f2}.node.warn-yellow{border:2.5px solid var(--warn);background:#fff9e7}.node.missing-data .meta{color:#a86675}.node.vacant{background:#fbfaff;color:#91889f;border:1.8px dashed #d4c9e3;box-shadow:none;min-height:74px}.node.vacant .plus{font-size:22px;line-height:1}.node.vacant .name{font-size:13px}.node mark{background:#fff1a8;border-radius:8px;padding:0 2px;color:inherit}
+  .legend{position:absolute;right:18px;bottom:18px;z-index:4;background:#ffffffee;border:1px solid #eee0f4;border-radius:18px;padding:12px 14px;box-shadow:var(--soft);font-size:11.5px;color:#6b5d75}.legend b{display:block;margin-bottom:6px;color:#3d3248}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}.dot.red{background:var(--danger)}.dot.yellow{background:var(--warn)}.dot.gray{background:var(--missing)}.dot.green{background:var(--ok)}
+  @media(max-width:900px){body{overflow:auto}header{height:auto}.app{height:auto;grid-template-columns:1fr}.tree-stage{height:76vh}.panel{max-height:none}}
+</style>
+</head>
+<body>
+<header><div><h1>Neko Family Tree</h1><div class="sub">Radial spider-web family tree with live-ish DreamMS character info refreshed by GitHub Actions.</div></div></header>
+<main class="app">
+  <aside class="panel">
+    <h2>Manage Tree</h2><div class="note">Compact control panel. Browser edits save locally first. Copy data to make family changes permanent in GitHub.</div>
+    <label>Find name</label><input id="search" placeholder="Search e.g. Gillian" />
+    <div class="stats"><div class="chip pink" id="peopleCount">0 people</div><div class="chip blue" id="generationCount">0 generations</div><div class="chip">Root: Thocky</div></div>
+    <div class="divider"></div>
+    <h2>Add / Replace</h2><label>Parent</label><select id="parentSelect"></select>
+    <div class="row"><div><label>Slot</label><select id="slotSelect"><option value="0">Junior 1</option><option value="1">Junior 2</option></select></div><div><label>Junior Name</label><input id="juniorName" placeholder="New junior" /></div></div>
+    <div class="buttons"><button id="saveBtn">Save</button><button class="secondary" id="clearBtn">Clear</button></div>
+    <div class="divider"></div>
+    <h2>Switch Names</h2><div class="row"><div><label>Name A</label><select id="switchA"></select></div><div><label>Name B</label><select id="switchB"></select></div></div>
+    <div class="buttons"><button id="switchBtn">Switch</button><button class="danger" id="resetBtn">Reset</button></div>
+    <div class="divider"></div>
+    <h2>Level Check</h2><div class="note">Parent should be higher level or same level as child.</div><div id="levelCheck" class="list levelBox">Loading…</div>
+    <div class="divider"></div>
+    <h2>GitHub Update</h2><div class="note">Force refresh reloads latest <b>characters.json</b>. To scrape DreamMS now, run your GitHub Action manually.</div>
+    <div class="tools"><button class="secondary" id="refreshBtn">Force Refresh</button><button class="secondary" id="copyBtn">Copy Data</button><button class="secondary" id="fitBtn">Fit View</button></div><div class="msg" id="msg"></div><div class="list" id="dataPreview"></div>
+  </aside>
+  <section class="tree-stage" id="stage">
+    <div class="tree-toolbar"><div class="badge" id="dataStatus">Character data: loading…</div><div class="zoomBtns"><button id="fitMode">Fit</button><button id="resetView">Center</button><button id="plus">+</button><button id="minus">−</button></div></div>
+    <div class="viewport" id="viewport"><div class="fit-layer" id="fitLayer"><div class="canvas" id="canvas"><svg class="rings" id="rings"></svg><svg class="links" id="links"></svg></div></div></div>
+    <div class="legend"><b>Level Guide</b><div><span class="dot green"></span>Parent higher level</div><div><span class="dot yellow"></span>Same level</div><div><span class="dot red"></span>Child higher level</div><div><span class="dot gray"></span>Missing data / vacant</div></div>
+  </section>
+</main>
+<script>
+const ROOT="Thocky";
+const ORIGINAL_FAMILY={
+  "Thocky":["Kaiko","Gillian"],
+  "Gillian":["Miffyy","Gill"],
+  "Miffyy":["looted","54o88"],
+  "54o88":["Mellowdy","Tock"],
+  "Tock":["Gwailou","Rushyy"],
+  "Gill":["ggill","Hell"],
+  "Hell":["ggil","Tocki"],
+  "ggil":["8lo8lo8lowme","Exteriority"],
+  "Kaiko":["sunshines","Tocky"],
+  "Tocky":["Leaw","mabokdy"],
+  "mabokdy":["scrabbit",null],
+  "Leaw":["Tork","okdy"],
+  "okdy":["sunbaedy",null],
+  "Tork":["Chageee","Arun"],
+  "Chageee":["Afersie",null],
+  "Afersie":["wookimo",null],
+  "Arun":["Tokk","Seub"],
+  "Tokk":["TypeR",null]
+};
+let family=loadFamily();
+let characterData={};
+let issues=[];
+let transform={x:0,y:0,scale:1};
+let isPanning=false,startX=0,startY=0,startTX=0,startTY=0;
+const els={canvas:document.getElementById('canvas'),links:document.getElementById('links'),rings:document.getElementById('rings'),viewport:document.getElementById('viewport'),fitLayer:document.getElementById('fitLayer'),parentSelect:document.getElementById('parentSelect'),switchA:document.getElementById('switchA'),switchB:document.getElementById('switchB'),slot:document.getElementById('slotSelect'),junior:document.getElementById('juniorName'),search:document.getElementById('search'),people:document.getElementById('peopleCount'),gens:document.getElementById('generationCount'),msg:document.getElementById('msg'),preview:document.getElementById('dataPreview'),status:document.getElementById('dataStatus'),levelCheck:document.getElementById('levelCheck')};
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function loadFamily(){try{return pruneFamily(JSON.parse(localStorage.getItem('nekoFamilyV8'))||clone(ORIGINAL_FAMILY));}catch{return clone(ORIGINAL_FAMILY)}}
+function save(){family=pruneFamily(family);localStorage.setItem('nekoFamilyV8',JSON.stringify(family));}
+function childSlots(n){const a=(family[n]||[]).slice(0,2);while(a.length<2)a.push(null);return a;}
+function realChildrenOf(n){return childSlots(n).filter(Boolean);}
+function reachableNames(){const seen=new Set();function walk(n){if(!n||seen.has(n))return;seen.add(n);realChildrenOf(n).forEach(walk)}walk(ROOT);return seen;}
+function pruneFamily(f){const seen=new Set([ROOT]);let changed=true;while(changed){changed=false;Object.entries(f).forEach(([p,cs])=>{if(seen.has(p))(cs||[]).forEach(c=>{if(c&&!seen.has(c)){seen.add(c);changed=true;}})})}const out={};seen.forEach(n=>{const arr=(f[n]||[]).slice(0,2);while(arr.length<2)arr.push(null);out[n]=arr});return out;}
+function allNames(){return [...reachableNames()].sort((a,b)=>a.localeCompare(b));}
+function buildTree(name,depth=0,seen=new Set()){if(seen.has(name))return {name:name+' ↺',real:name,depth,children:[],vacant:false,cycle:true};seen.add(name);return {name,real:name,depth,vacant:false,children:childSlots(name).map((c,i)=>c?buildTree(c,depth+1,new Set(seen)):{name:'Vacant',real:`__vacant__${name}_${i}`,parent:name,slot:i,depth:depth+1,children:[],vacant:true})};}
+function leaves(n){if(!n.children.length)return 1;return n.children.reduce((a,c)=>a+leaves(c),0)}
+function assignAngles(n,start,end){n.start=start;n.end=end;n.angle=(start+end)/2;const total=n.children.reduce((a,c)=>a+leaves(c),0);let cur=start;n.children.forEach(c=>{const span=(end-start)*(leaves(c)/total);assignAngles(c,cur,cur+span);cur+=span;});}
+function flatten(n,a=[]){a.push(n);n.children.forEach(c=>flatten(c,a));return a;}
+function maxDepth(n){return Math.max(n.depth,...n.children.map(maxDepth),n.depth)}
+function levelOf(name){const raw=characterData[name]?.level;const n=parseInt(String(raw||'').replace(/[^0-9]/g,''),10);return Number.isFinite(n)?n:null;}
+function levelStatus(parent,child){if(!parent||!child||child.vacant)return 'missing';const p=levelOf(parent.real),c=levelOf(child.real);if(p==null||c==null)return 'missing';if(c>p)return 'bad';if(c===p)return 'same';return 'ok';}
+function runLevelCheck(root){issues=[];const same=[];const missing=[];flatten(root).forEach(n=>{if(n.vacant)return;n.children.forEach(c=>{if(c.vacant)return;const st=levelStatus(n,c);const p=levelOf(n.real),cl=levelOf(c.real);if(st==='bad')issues.push(`🔴 ${c.real} Lv ${cl} > ${n.real} Lv ${p}`);else if(st==='same')same.push(`🟡 ${c.real} Lv ${cl} = ${n.real} Lv ${p}`);else if(st==='missing')missing.push(`⚪ ${n.real} → ${c.real} missing data`);});});const parts=[];if(issues.length)parts.push(`${issues.length} higher-level child found:\n${issues.join('\n')}`);else parts.push('No higher-level child found.');if(same.length)parts.push(`${same.length} same-level notice(s):\n${same.join('\n')}`);if(missing.length)parts.push(`${missing.length} missing data relation(s).`);els.levelCheck.textContent=parts.join('\n\n');els.levelCheck.className='list levelBox '+(issues.length?'levelBad':same.length?'levelWarn':'levelGood');}
+function render(){family=pruneFamily(family);const root=buildTree(ROOT);assignAngles(root,-Math.PI/2,Math.PI*1.5);const nodes=flatten(root);const depth=maxDepth(root);const ringGap=150;const center=ringGap*(depth+1)+150;const size=center*2;nodes.forEach(n=>{const radius=n.depth*ringGap;n.x=center+Math.cos(n.angle)*radius;n.y=center+Math.sin(n.angle)*radius;});els.canvas.style.width=size+'px';els.canvas.style.height=size+'px';[els.links,els.rings].forEach(svg=>{svg.setAttribute('width',size);svg.setAttribute('height',size);svg.innerHTML='';});drawRings(center,depth,ringGap);document.querySelectorAll('.node').forEach(n=>n.remove());nodes.forEach(n=>n.children.forEach(c=>drawLink(n,c,center)));const q=els.search.value.trim().toLowerCase();nodes.forEach(n=>drawNode(n,q));updateControls();runLevelCheck(root);els.people.textContent=allNames().length+' people';els.gens.textContent=(depth+1)+' generations';els.preview.textContent=JSON.stringify(family,null,2);if(!transform.initialized){setDefaultView(size);transform.initialized=true;}applyTransform();}
+function drawRings(center,depth,gap){for(let i=1;i<=depth;i++){const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',center);c.setAttribute('cy',center);c.setAttribute('r',i*gap);c.setAttribute('fill','none');c.setAttribute('stroke',i%2?'#eee5fb':'#f4edf9');c.setAttribute('stroke-width','2');c.setAttribute('stroke-dasharray',i%2?'6 8':'');els.rings.appendChild(c);}}
+function drawLink(a,b){const path=document.createElementNS('http://www.w3.org/2000/svg','path');const r1=Math.hypot(a.x-b.x,a.y-b.y);const midx=(a.x+b.x)/2,midy=(a.y+b.y)/2;const d=`M ${a.x} ${a.y} Q ${midx} ${midy} ${b.x} ${b.y}`;path.setAttribute('d',d);path.setAttribute('fill','none');path.setAttribute('stroke',b.vacant?'#d8cfdf':levelStatus(a,b)==='bad'?'#ff7b7b':levelStatus(a,b)==='same'?'#f2bd54':'var(--line)');path.setAttribute('stroke-width',b.vacant?'2.2':'3');path.setAttribute('stroke-linecap','round');path.setAttribute('stroke-dasharray',b.vacant?'5 6':'');path.setAttribute('opacity',b.vacant?'.75':'1');els.links.appendChild(path);}
+function drawNode(n,q){const data=characterData[n.real]||{};const d=document.createElement('div');d.style.left=n.x+'px';d.style.top=n.y+'px';if(n.vacant){d.className='node vacant';d.innerHTML='<div class="plus">＋</div><div class="name">Vacant</div><div class="meta">Empty junior slot</div>';els.canvas.appendChild(d);return;}d.className='node gen'+n.depth;const parent=flatten(buildTree(ROOT)).find(p=>p.children.some(c=>c.real===n.real&&!c.vacant));if(parent){const st=levelStatus(parent,n);if(st==='bad')d.classList.add('warn-red');if(st==='same')d.classList.add('warn-yellow');if(st==='missing')d.classList.add('missing-data');}let nm=esc(n.name);if(q&&n.real.toLowerCase().includes(q)){const raw=n.name;const i=raw.toLowerCase().indexOf(q);nm=esc(raw.slice(0,i))+'<mark>'+esc(raw.slice(i,i+q.length))+'</mark>'+esc(raw.slice(i+q.length));}const hasInfo=data.job||data.level;const meta=hasInfo?`${esc(data.job||'Unknown')} · Lv ${esc(data.level||'?')}`:'No character data';const img=data.image?`<img class="avatar" src="${esc(data.image)}" alt="${esc(n.real)}" loading="lazy" referrerpolicy="no-referrer">`:'<span class="placeholder">♡</span>';d.innerHTML=`<div class="avatarWrap">${img}</div><div class="name">${nm}</div><div class="meta">${meta}</div>`;d.title=realChildrenOf(n.real).length?`${n.real} → ${realChildrenOf(n.real).join(', ')}`:n.real;d.onclick=(e)=>{e.stopPropagation();centerOn(n.x,n.y,Math.max(transform.scale,0.85));};els.canvas.appendChild(d);}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+function updateControls(){const names=allNames();const opts=names.map(n=>`<option value="${esc(n)}">${esc(n)}</option>`).join('');const prev={p:els.parentSelect.value,a:els.switchA.value,b:els.switchB.value};els.parentSelect.innerHTML=opts;els.switchA.innerHTML='<option value="">— choose —</option>'+opts;els.switchB.innerHTML='<option value="">— choose —</option>'+opts;if(names.includes(prev.p))els.parentSelect.value=prev.p;if(names.includes(prev.a))els.switchA.value=prev.a;if(names.includes(prev.b))els.switchB.value=prev.b;}
+function setDefaultView(size){const vw=els.viewport.clientWidth,vh=els.viewport.clientHeight;const fit=Math.min(vw/size,vh/size);transform.scale=Math.min(Math.max(fit*1.55,0.38),0.85);transform.x=(vw-size*transform.scale)/2;transform.y=(vh-size*transform.scale)/2;}
+function fitView(){const w=els.canvas.offsetWidth,h=els.canvas.offsetHeight,vw=els.viewport.clientWidth,vh=els.viewport.clientHeight;transform.scale=Math.min(vw/w,vh/h)*0.94;transform.x=(vw-w*transform.scale)/2;transform.y=(vh-h*transform.scale)/2;applyTransform();}
+function centerOn(x,y,scale=0.9){transform.scale=scale;transform.x=els.viewport.clientWidth/2-x*scale;transform.y=els.viewport.clientHeight/2-y*scale;applyTransform();}
+function applyTransform(){els.fitLayer.style.transform=`translate(${transform.x}px,${transform.y}px) scale(${transform.scale})`;}
+function zoomAt(clientX,clientY,factor){const rect=els.viewport.getBoundingClientRect();const px=clientX-rect.left,py=clientY-rect.top;const beforeX=(px-transform.x)/transform.scale,beforeY=(py-transform.y)/transform.scale;transform.scale=Math.min(2.2,Math.max(0.12,transform.scale*factor));transform.x=px-beforeX*transform.scale;transform.y=py-beforeY*transform.scale;applyTransform();}
+function say(t){els.msg.textContent=t;setTimeout(()=>els.msg.textContent='',2600)}
+async function loadCharacterData(){try{const r=await fetch('characters.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('missing characters.json');const j=await r.json();characterData=j.characters||j||{};const shown=allNames().filter(n=>characterData[n]?.job||characterData[n]?.level||characterData[n]?.image).length;const fileCount=Object.keys(characterData).length;els.status.textContent=`Characters: ${shown}/${allNames().length} shown · ${fileCount} in file`;}catch(e){characterData={};els.status.textContent='Character data not loaded yet';}render();}
+document.getElementById('saveBtn').onclick=()=>{const p=els.parentSelect.value,name=els.junior.value.trim(),slot=+els.slot.value;if(!name)return say('Type a junior name first.');family[p]=childSlots(p);family[p][slot]=name;if(!family[name])family[name]=[null,null];save();els.junior.value='';render();say('Saved.');};
+document.getElementById('clearBtn').onclick=()=>{const p=els.parentSelect.value,slot=+els.slot.value;family[p]=childSlots(p);family[p][slot]=null;save();render();say('Cleared.');};
+document.getElementById('switchBtn').onclick=()=>{const a=els.switchA.value,b=els.switchB.value;if(!a||!b||a===b)return say('Choose two different names.');const next={};Object.entries(family).forEach(([p,cs])=>{const np=p===a?b:p===b?a:p;next[np]=(cs||[]).map(c=>c===a?b:c===b?a:c);});family=pruneFamily(next);save();render();say('Names switched.');};
+document.getElementById('resetBtn').onclick=()=>{if(confirm('Reset to the original family tree?')){family=clone(ORIGINAL_FAMILY);save();transform.initialized=false;render();say('Reset done.');}};
+document.getElementById('copyBtn').onclick=async()=>{await navigator.clipboard.writeText('const ORIGINAL_FAMILY='+JSON.stringify(family,null,2)+';');say('Copied family data.');};
+document.getElementById('refreshBtn').onclick=()=>{loadCharacterData();say('Reloaded latest characters.json.');};
+document.getElementById('fitBtn').onclick=fitView;document.getElementById('fitMode').onclick=fitView;document.getElementById('resetView').onclick=()=>{transform.initialized=false;render();};document.getElementById('plus').onclick=()=>zoomAt(els.viewport.clientWidth/2,els.viewport.clientHeight/2,1.18);document.getElementById('minus').onclick=()=>zoomAt(els.viewport.clientWidth/2,els.viewport.clientHeight/2,1/1.18);els.search.oninput=render;window.addEventListener('resize',()=>{transform.initialized=false;render();});
+els.viewport.addEventListener('wheel',e=>{e.preventDefault();zoomAt(e.clientX,e.clientY,e.deltaY<0?1.1:1/1.1);},{passive:false});
+els.viewport.addEventListener('mousedown',e=>{isPanning=true;startX=e.clientX;startY=e.clientY;startTX=transform.x;startTY=transform.y;});window.addEventListener('mouseup',()=>isPanning=false);window.addEventListener('mousemove',e=>{if(!isPanning)return;transform.x=startTX+(e.clientX-startX);transform.y=startTY+(e.clientY-startY);applyTransform();});
+loadCharacterData();
+</script>
+</body>
+</html>
