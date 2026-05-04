@@ -11,8 +11,8 @@
   },
   "Gillian": {
     "job": "Blade Master",
-    "level": "282",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072153%2C0%2C0%2C1012709%2C1022285%2C1007009%2C1332130%2C1032059%2C1082102%2C1102039%2C1342069%2C67470%2C28044%2C/jump/&renderMode=Centered&resize=1"
+    "level": "283",
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072153%2C0%2C1054648%2C1012709%2C1022285%2C1007009%2C1332130%2C1032059%2C1082102%2C1102039%2C1342069%2C67470%2C28044%2C/jump/&renderMode=Centered&resize=1"
   },
   "Miffyy": {
     "job": "Bishop",
@@ -60,9 +60,9 @@
     "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072153%2C0%2C1051953%2C1012057%2C1022315%2C1007017%2C1703818%2C1032024%2C1082232%2C1103358%2C0%2C48650%2C28044%2C/jump/&renderMode=Centered&resize=1"
   },
   "HeII": {
-    "job": "Beginner",
-    "level": "1",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072037%2C1060006%2C1040006%2C0%2C0%2C0%2C1302000%2C0%2C0%2C0%2C0%2C30022%2C20000%2C/jump/&renderMode=Centered&resize=1"
+    "job": "F/P Arch Mage",
+    "level": "275",
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073250%2C0%2C1053824%2C1012057%2C1022285%2C1005469%2C1382104%2C1032316%2C1082102%2C1103772%2C1092064%2C61371%2C26091%2C/jump/&renderMode=Centered&resize=1"
   },
   "ggil": {
     "job": "Bow Master",
