@@ -41,8 +41,6 @@
     <div class="divider"></div>
     <h2>Level Check</h2><div class="note">Parent should be higher or same level as child.</div><div id="levelCheck" class="levelBox">Loading…</div>
     <div class="divider"></div>
-    <h2>GitHub</h2><div class="note">Force refresh reloads latest characters.json. To scrape DreamMS now, run GitHub Action manually.</div>
-    <div class="tools"><button class="secondary" id="refreshBtn">Force Refresh</button><button class="secondary" id="copyBtn">Copy Data</button><button class="secondary" id="fitBtn">Fit</button></div>
     <div class="msg" id="msg"></div><div class="list" id="dataPreview"></div>
   </aside>
   <section class="tree-stage" id="stage">
@@ -90,9 +88,7 @@ gid('saveBtn').onclick=()=>{const p=els.parentSelect.value,name=els.junior.value
 gid('clearBtn').onclick=()=>{const p=els.parentSelect.value,slot=+els.slot.value;family[p]=rawChildren(p);family[p][slot]=null;save();render();say('Slot cleared')};
 gid('switchBtn').onclick=()=>{const a=els.switchA.value,b=els.switchB.value;if(!a||!b||a===b)return say('Choose two names');const next={};Object.entries(family).forEach(([p,cs])=>{const np=p===a?b:p===b?a:p;next[np]=(cs||[]).map(c=>c===a?b:c===b?a:c)});family=pruneFamily(next);save();render();say('Switched')};
 gid('resetBtn').onclick=()=>{if(confirm('Reset original tree?')){family=clone(ORIGINAL_FAMILY);save();render();say('Reset done')}};
-gid('copyBtn').onclick=async()=>{await navigator.clipboard.writeText('const ORIGINAL_FAMILY='+JSON.stringify(family,null,2)+';');say('Copied')};
-gid('refreshBtn').onclick=()=>{loadCharacterData();say('Reloaded latest characters.json')};
-gid('fitBtn').onclick=fitTree;gid('fitMode').onclick=fitTree;gid('rootBtn').onclick=centerRoot;gid('plus').onclick=()=>zoomAt(els.viewport.clientWidth/2,els.viewport.clientHeight/2,1.18);gid('minus').onclick=()=>zoomAt(els.viewport.clientWidth/2,els.viewport.clientHeight/2,.84);els.search.oninput=render;window.addEventListener('resize',()=>{applyTransform()});
+gid('fitMode').onclick=fitTree;gid('rootBtn').onclick=centerRoot;gid('plus').onclick=()=>zoomAt(els.viewport.clientWidth/2,els.viewport.clientHeight/2,1.18);gid('minus').onclick=()=>zoomAt(els.viewport.clientWidth/2,els.viewport.clientHeight/2,.84);els.search.oninput=render;window.addEventListener('resize',()=>{applyTransform()});
 let dragging=false,lastX=0,lastY=0;els.viewport.addEventListener('pointerdown',e=>{dragging=true;lastX=e.clientX;lastY=e.clientY;els.viewport.setPointerCapture(e.pointerId);els.viewport.classList.add('grabbing')});els.viewport.addEventListener('pointermove',e=>{if(!dragging)return;tx+=e.clientX-lastX;ty+=e.clientY-lastY;lastX=e.clientX;lastY=e.clientY;applyTransform()});els.viewport.addEventListener('pointerup',e=>{dragging=false;els.viewport.classList.remove('grabbing')});els.viewport.addEventListener('wheel',e=>{e.preventDefault();zoomAt(e.clientX,e.clientY,e.deltaY<0?1.1:.9)},{passive:false});
 loadCharacterData();
 </script>
