@@ -1,7 +1,7 @@
 {
   "Thocky": {
     "job": "Aran",
-    "level": "289",
+    "level": "290",
     "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072344%2C0%2C1054046%2C1012057%2C1022048%2C1005464%2C1442116%2C1032059%2C1082102%2C1102039%2C0%2C47070%2C28444%2C/jump/&renderMode=Centered&resize=1"
   },
   "Kaiko": {
@@ -36,8 +36,8 @@
   },
   "Mellowdy": {
     "job": "Corsair",
-    "level": "259",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/0%2C0%2C1054570%2C1012057%2C1022048%2C1006948%2C1492085%2C1032316%2C1082238%2C1103912%2C0%2C45680%2C27010%2C/jump/&renderMode=Centered&resize=1"
+    "level": "260",
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073995%2C0%2C1054570%2C1012057%2C1022048%2C1006948%2C1492085%2C1032316%2C1082238%2C1103912%2C0%2C45680%2C27010%2C/jump/&renderMode=Centered&resize=1"
   },
   "Tock": {
     "job": "Night Walker",
@@ -56,7 +56,7 @@
   },
   "ggill": {
     "job": "Buccaneer",
-    "level": "246",
+    "level": "247",
     "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072153%2C0%2C1051953%2C1012057%2C1022315%2C1007017%2C1703818%2C1032024%2C1082232%2C1103358%2C0%2C48650%2C28044%2C/jump/&renderMode=Centered&resize=1"
   },
   "Heii": {
@@ -72,7 +72,7 @@
   "Tocki": {
     "job": "Bow Master",
     "level": "254",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/0%2C0%2C1054571%2C1012057%2C1022048%2C1006608%2C1452111%2C1032024%2C1082102%2C0%2C0%2C67590%2C54051%2C/jump/&renderMode=Centered&resize=1"
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/0%2C0%2C0%2C1012057%2C1022048%2C1006608%2C1452111%2C1032024%2C1082102%2C0%2C0%2C67590%2C54051%2C/jump/&renderMode=Centered&resize=1"
   },
   "8lo8lo8lowme": {
     "job": "Buccaneer",
@@ -122,7 +122,7 @@
   "sunbaedy": {
     "job": "Bow Master",
     "level": "226",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072153%2C0%2C1054571%2C1012057%2C1022048%2C1006903%2C1703718%2C1032316%2C1082232%2C1102206%2C0%2C43587%2C28072%2C/jump/&renderMode=Centered&resize=1"
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/0%2C0%2C1054571%2C1012057%2C1022048%2C1006903%2C1703718%2C1032316%2C1082232%2C0%2C0%2C43587%2C28072%2C/jump/&renderMode=Centered&resize=1"
   },
   "Chageee": {
     "job": "Bow Master",
@@ -141,13 +141,13 @@
   },
   "wookimo": {
     "job": "Blade Master",
-    "level": "217",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072153%2C1060107%2C1053301%2C1012057%2C1022048%2C1002297%2C1332073%2C1032024%2C1082102%2C1102039%2C1342069%2C36450%2C20076%2C/jump/&renderMode=Centered&resize=1"
+    "level": "218",
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072153%2C1060107%2C1053301%2C1012057%2C1022048%2C1006439%2C1703480%2C1032024%2C1082102%2C1103688%2C1342069%2C36450%2C20076%2C/jump/&renderMode=Centered&resize=1"
   },
   "Tokk": {
     "job": "Buccaneer",
     "level": "204",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2010/0%2C0%2C1054267%2C0%2C1022048%2C1006642%2C1703561%2C1032059%2C1082232%2C0%2C0%2C34130%2C26091%2C/jump/&renderMode=Centered&resize=1"
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2010/1074008%2C0%2C1054267%2C1012057%2C1022048%2C1006642%2C1703561%2C1032059%2C1082232%2C0%2C0%2C34130%2C26091%2C/jump/&renderMode=Centered&resize=1"
   },
   "Seub": {
     "job": "Blaze Wizard",
