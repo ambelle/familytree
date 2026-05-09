@@ -7,7 +7,7 @@
   "Kaiko": {
     "job": "Bishop",
     "level": "267",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2000/1072153%2C0%2C1050581%2C1012709%2C1022048%2C1004815%2C1703016%2C1032316%2C1082235%2C1103912%2C1092064%2C61635%2C28044%2C/jump/&renderMode=Centered&resize=1"
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2000/1072153%2C0%2C1050581%2C1012709%2C1022048%2C1004815%2C1703016%2C1032024%2C1082235%2C1103912%2C1092064%2C61635%2C28044%2C/jump/&renderMode=Centered&resize=1"
   },
   "Gillian": {
     "job": "Blade Master",
@@ -26,7 +26,7 @@
   },
   "looted": {
     "job": "Shadower",
-    "level": "273",
+    "level": "274",
     "image": "https://api.dreamms.gg/api/gms/latest/character/2000/1073635%2C0%2C1054128%2C1012772%2C1022048%2C1004029%2C1703457%2C1032362%2C1082102%2C1103693%2C1092064%2C47070%2C26814%2C/jump/&renderMode=Centered&resize=1"
   },
   "54o88": {
@@ -42,7 +42,7 @@
   "Tock": {
     "job": "Night Walker",
     "level": "263",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/0%2C0%2C0%2C1012057%2C1022048%2C1005914%2C1472122%2C1032024%2C1082102%2C0%2C0%2C47683%2C54051%2C/jump/&renderMode=Centered&resize=1"
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/0%2C0%2C1054545%2C1012057%2C1022048%2C1005914%2C1472122%2C1032024%2C1082102%2C0%2C0%2C47683%2C54051%2C/jump/&renderMode=Centered&resize=1"
   },
   "Gwailou": {
     "job": "Evan",
@@ -62,7 +62,7 @@
   "Heii": {
     "job": "F/P Arch Mage",
     "level": "275",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072356%2C0%2C0%2C1012057%2C1022285%2C1005469%2C1382104%2C1032316%2C1082102%2C1103772%2C1092064%2C61371%2C26091%2C/jump/&renderMode=Centered&resize=1"
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073250%2C0%2C0%2C1012057%2C1022285%2C1005469%2C1382104%2C1032316%2C1082102%2C1103772%2C1092064%2C61371%2C26091%2C/jump/&renderMode=Centered&resize=1"
   },
   "ggil": {
     "job": "Bow Master",
@@ -72,7 +72,7 @@
   "Tocki": {
     "job": "Bow Master",
     "level": "254",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/0%2C0%2C0%2C1012057%2C1022048%2C1006608%2C1452111%2C1032024%2C1082102%2C0%2C0%2C67590%2C54051%2C/jump/&renderMode=Centered&resize=1"
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/0%2C0%2C1054571%2C1012057%2C1022048%2C1006608%2C1452111%2C1032024%2C1082102%2C0%2C0%2C67590%2C54051%2C/jump/&renderMode=Centered&resize=1"
   },
   "8lo8lo8lowme": {
     "job": "Buccaneer",
@@ -97,7 +97,7 @@
   "Leaw": {
     "job": "Aran",
     "level": "264",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1074283%2C0%2C1054640%2C1012030%2C1022048%2C1004683%2C1703544%2C1032024%2C1082550%2C1103984%2C0%2C48995%2C21141%2C/jump/&renderMode=Centered&resize=1"
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1074283%2C0%2C1054640%2C1012030%2C1022048%2C1004683%2C1703544%2C1032024%2C1082550%2C0%2C0%2C48995%2C21141%2C/jump/&renderMode=Centered&resize=1"
   },
   "mabokdy": {
     "job": "F/P Arch Mage",
@@ -131,8 +131,8 @@
   },
   "Arun": {
     "job": "Dawn Warrior",
-    "level": "241",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2000/1071237%2C0%2C1051649%2C1012057%2C1022048%2C1002186%2C1703157%2C1032024%2C1082102%2C1103402%2C1092064%2C67690%2C28027%2C/jump/&renderMode=Centered&resize=1"
+    "level": "242",
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2000/1071237%2C0%2C1051649%2C1012057%2C1022048%2C1002186%2C1703170%2C1032024%2C1082102%2C1103402%2C1092064%2C67690%2C28027%2C/jump/&renderMode=Centered&resize=1"
   },
   "Afersie": {
     "job": "Bishop",
