@@ -2,7 +2,7 @@
   "Thocky": {
     "job": "Aran",
     "level": "291",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1071229%2C0%2C1054046%2C1012057%2C1022048%2C1005464%2C1442116%2C1032059%2C1082102%2C1102039%2C0%2C47070%2C28444%2C/jump/&renderMode=Centered&resize=1"
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/0%2C0%2C1054046%2C1012057%2C1022048%2C1005464%2C1442116%2C1032059%2C1082102%2C0%2C0%2C47070%2C28444%2C/jump/&renderMode=Centered&resize=1"
   },
   "Kaiko": {
     "job": "Bishop",
@@ -12,7 +12,7 @@
   "Gillian": {
     "job": "Blade Master",
     "level": "284",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073380%2C0%2C1054648%2C1012709%2C1022285%2C1007009%2C1332130%2C1032059%2C1082237%2C1102206%2C1342069%2C67470%2C28044%2C/jump/&renderMode=Centered&resize=1"
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073380%2C0%2C0%2C1012709%2C1022285%2C1007009%2C1332130%2C1032059%2C1082237%2C0%2C1342069%2C67470%2C28044%2C/jump/&renderMode=Centered&resize=1"
   },
   "Miffyy": {
     "job": "Bishop",
@@ -62,12 +62,12 @@
   "Heii": {
     "job": "F/P Arch Mage",
     "level": "276",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073250%2C0%2C0%2C1012057%2C1022285%2C1005469%2C1382104%2C1032316%2C1082102%2C1103772%2C1092064%2C61371%2C26091%2C/jump/&renderMode=Centered&resize=1"
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073250%2C0%2C0%2C1012632%2C1022285%2C1005469%2C1382104%2C1032316%2C1082102%2C1103772%2C1092057%2C61371%2C26091%2C/jump/&renderMode=Centered&resize=1"
   },
   "ggil": {
     "job": "Bow Master",
     "level": "266",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073325%2C0%2C0%2C1012379%2C1022278%2C1005172%2C1703107%2C1032024%2C1082102%2C1103360%2C0%2C61980%2C28044%2C/jump/&renderMode=Centered&resize=1"
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073325%2C0%2C1054649%2C1012379%2C1022278%2C1005172%2C1703107%2C1032024%2C1082102%2C1103360%2C0%2C61980%2C28044%2C/jump/&renderMode=Centered&resize=1"
   },
   "Tocki": {
     "job": "Bow Master",
@@ -131,7 +131,7 @@
   },
   "Arun": {
     "job": "Dawn Warrior",
-    "level": "244",
+    "level": "245",
     "image": "https://api.dreamms.gg/api/gms/latest/character/2000/1071237%2C0%2C1051649%2C1012057%2C1022048%2C1002186%2C1703170%2C1032024%2C1082102%2C1103402%2C1092064%2C67690%2C28027%2C/jump/&renderMode=Centered&resize=1"
   },
   "Afersie": {
