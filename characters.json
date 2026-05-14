@@ -2,7 +2,7 @@
   "Thocky": {
     "job": "Aran",
     "level": "291",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1071229%2C0%2C1054046%2C1012057%2C1022048%2C1005464%2C1442116%2C1032059%2C1082102%2C1102039%2C0%2C47070%2C28444%2C/jump/&renderMode=Centered&resize=1"
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/0%2C0%2C1054046%2C1012057%2C1022048%2C1005464%2C1442116%2C1032059%2C1082102%2C0%2C0%2C47070%2C28444%2C/jump/&renderMode=Centered&resize=1"
   },
   "Kaiko": {
     "job": "Bishop",
@@ -62,7 +62,7 @@
   "Heii": {
     "job": "F/P Arch Mage",
     "level": "276",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073250%2C0%2C1053824%2C1012057%2C1022285%2C1005469%2C1382104%2C1032316%2C1082102%2C1103772%2C1092064%2C61371%2C26091%2C/jump/&renderMode=Centered&resize=1"
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073250%2C0%2C0%2C1012057%2C1022285%2C1005469%2C1382104%2C1032316%2C1082102%2C1103772%2C1092064%2C61371%2C26091%2C/jump/&renderMode=Centered&resize=1"
   },
   "ggil": {
     "job": "Bow Master",
@@ -97,7 +97,7 @@
   "Leaw": {
     "job": "Aran",
     "level": "265",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1074283%2C0%2C1054640%2C1012030%2C1022048%2C1004683%2C1703544%2C1032024%2C1082550%2C1103984%2C0%2C48995%2C21141%2C/jump/&renderMode=Centered&resize=1"
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1074283%2C0%2C1054640%2C1012030%2C1022048%2C1004683%2C1703544%2C1032024%2C1082550%2C0%2C0%2C48995%2C21141%2C/jump/&renderMode=Centered&resize=1"
   },
   "mabokdy": {
     "job": "F/P Arch Mage",
@@ -146,7 +146,7 @@
   },
   "Tokk": {
     "job": "Buccaneer",
-    "level": "210",
+    "level": "211",
     "image": "https://api.dreamms.gg/api/gms/latest/character/2010/0%2C0%2C1050751%2C1012057%2C1022048%2C1006453%2C1703162%2C1032059%2C1082232%2C0%2C0%2C34130%2C26091%2C/jump/&renderMode=Centered&resize=1"
   },
   "Seub": {
