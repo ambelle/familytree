@@ -91,8 +91,8 @@
   },
   "Tocky": {
     "job": "Bishop",
-    "level": "266",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072268%2C0%2C0%2C1012632%2C1022278%2C1001133%2C1372084%2C1032316%2C1082102%2C1103758%2C1092064%2C61370%2C26091%2C/jump/&renderMode=Centered&resize=1"
+    "level": "267",
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072153%2C0%2C1050574%2C1012057%2C1022048%2C1001133%2C1372084%2C1032024%2C1082102%2C1103758%2C1092064%2C61370%2C26091%2C/jump/&renderMode=Centered&resize=1"
   },
   "Leaw": {
     "job": "Aran",
@@ -117,7 +117,7 @@
   "okdy": {
     "job": "Bishop",
     "level": "257",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1074302%2C0%2C1050879%2C1012057%2C1022048%2C1007009%2C1703802%2C1032024%2C1082235%2C1103875%2C1092064%2C60256%2C25606%2C/jump/&renderMode=Centered&resize=1"
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073876%2C0%2C1050879%2C1012057%2C1022048%2C1007009%2C1703802%2C1032024%2C1082235%2C1103875%2C1092064%2C60256%2C25606%2C/jump/&renderMode=Centered&resize=1"
   },
   "sunbaedy": {
     "job": "Bow Master",
@@ -137,7 +137,7 @@
   "Afersie": {
     "job": "Bishop",
     "level": "234",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072153%2C0%2C1052142%2C1012057%2C1022048%2C1002343%2C1703477%2C1032024%2C1082232%2C1102039%2C1092064%2C30260%2C20603%2C/jump/&renderMode=Centered&resize=1"
+    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072153%2C0%2C1052142%2C1012057%2C1022048%2C1006446%2C1703480%2C1032024%2C1082232%2C1102039%2C1092064%2C30260%2C20603%2C/jump/&renderMode=Centered&resize=1"
   },
   "wookimo": {
     "job": "Blade Master",
@@ -156,7 +156,7 @@
   },
   "TypeR": {
     "job": "Hermit",
-    "level": "114",
+    "level": "115",
     "image": "https://api.dreamms.gg/api/gms/latest/character/2010/1072171%2C0%2C1040002%2C0%2C0%2C1002798%2C1472055%2C1032061%2C0%2C1102839%2C0%2C45230%2C23086%2C/jump/&renderMode=Centered&resize=1"
   }
 }
