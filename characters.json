@@ -1,28 +1,28 @@
 {
   "Thocky": {
-    "job": "Aran",
-    "level": "293",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1071134%2C0%2C1054046%2C1012057%2C1022048%2C1005464%2C1703909%2C1032059%2C1082229%2C1102039%2C0%2C47070%2C28444%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "Kaiko": {
-    "job": "Bishop",
-    "level": "270",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2000/1072153%2C0%2C1050581%2C1012709%2C1022048%2C1004815%2C1703016%2C1032024%2C1082102%2C1103912%2C1092064%2C61635%2C28044%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "Gillian": {
-    "job": "Blade Master",
-    "level": "286",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073380%2C0%2C1054648%2C1012709%2C1022285%2C1007009%2C1332130%2C1032059%2C1082102%2C1102039%2C1342069%2C67470%2C28044%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "Miffyy": {
-    "job": "Bishop",
-    "level": "276",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073489%2C0%2C1054700%2C1012672%2C1022048%2C1005479%2C1702855%2C1032315%2C1082714%2C1103912%2C1092057%2C68211%2C27006%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "Gill": {
-    "job": "F/P Arch Mage",
-    "level": "276",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2000/1072356%2C0%2C1054649%2C1012632%2C1022278%2C1005514%2C1703542%2C1032316%2C1082235%2C1103758%2C1092057%2C64201%2C28044%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "looted": {
     "job": "Shadower",
@@ -30,19 +30,19 @@
     "image": "https://api.dreamms.gg/api/gms/latest/character/2000/1073635%2C0%2C1054128%2C1012772%2C1022048%2C1004029%2C1703457%2C1032362%2C1082102%2C1103693%2C1092064%2C47070%2C26814%2C/jump/&renderMode=Centered&resize=1"
   },
   "54o88": {
-    "job": "Wind Archer",
-    "level": "269",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2000/0%2C0%2C0%2C1012759%2C1022316%2C1005634%2C1703250%2C1032316%2C1082236%2C0%2C0%2C60477%2C50036%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "Mellowdy": {
-    "job": "Corsair",
-    "level": "260",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073995%2C0%2C1054570%2C1012057%2C1022048%2C1006948%2C1492085%2C1032316%2C1082238%2C1103912%2C0%2C45680%2C27010%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "Tock": {
-    "job": "Night Walker",
-    "level": "264",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/0%2C0%2C1054545%2C1012057%2C1022048%2C1005914%2C1472122%2C1032024%2C1082102%2C0%2C0%2C47683%2C54051%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "Gwailou": {
     "job": "Evan",
@@ -50,34 +50,34 @@
     "image": "https://api.dreamms.gg/api/gms/latest/character/2000/1072369%2C0%2C1052156%2C1012632%2C1022073%2C1003112%2C1372044%2C1032061%2C1082232%2C1102206%2C1092057%2C35205%2C20044%2C/jump/&renderMode=Centered&resize=1"
   },
   "Rushyy": {
-    "job": "Magician",
-    "level": "52",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072369%2C1060002%2C1040006%2C0%2C0%2C1002053%2C1332066%2C0%2C0%2C0%2C0%2C30037%2C20000%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "ggill": {
-    "job": "Buccaneer",
-    "level": "250",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072153%2C0%2C1051953%2C1012057%2C1022315%2C1007017%2C1703818%2C1032024%2C1082102%2C1103358%2C0%2C48650%2C28044%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "Heii": {
-    "job": "F/P Arch Mage",
-    "level": "276",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073250%2C0%2C0%2C1012057%2C1022285%2C1005469%2C1382104%2C1032316%2C1082235%2C1103772%2C1092064%2C61371%2C26091%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "ggil": {
-    "job": "Bow Master",
-    "level": "266",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073325%2C0%2C1054649%2C1012379%2C1022048%2C1005172%2C1703107%2C1032024%2C1082102%2C1103360%2C0%2C61980%2C28044%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "Tocki": {
-    "job": "Bow Master",
-    "level": "256",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072153%2C0%2C1054571%2C1012057%2C1022048%2C1006608%2C1452111%2C1032024%2C1082102%2C1103756%2C0%2C67590%2C54051%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "8lo8lo8lowme": {
-    "job": "Buccaneer",
-    "level": "250",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/0%2C0%2C1053818%2C1012632%2C1022278%2C1006608%2C1703156%2C1032316%2C1082238%2C1103293%2C0%2C60630%2C28072%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "Exteriority": {
     "job": "Blade Master",
@@ -90,73 +90,73 @@
     "image": "https://api.dreamms.gg/api/gms/latest/character/2000/1073464%2C0%2C1051816%2C1012057%2C1022048%2C1005530%2C1703448%2C1032024%2C1082744%2C1103665%2C1092064%2C47747%2C24416%2C/jump/&renderMode=Centered&resize=1"
   },
   "Tocky": {
-    "job": "Bishop",
-    "level": "268",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072153%2C0%2C0%2C1012057%2C1022048%2C1001133%2C1372084%2C1032024%2C1082102%2C1103758%2C1092064%2C61370%2C26091%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "Leaw": {
-    "job": "Aran",
-    "level": "265",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1074283%2C0%2C1054640%2C1012030%2C1022048%2C1004683%2C1703544%2C1032024%2C1082550%2C0%2C0%2C48995%2C21141%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "mabokdy": {
-    "job": "F/P Arch Mage",
-    "level": "230",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1074283%2C0%2C1054619%2C1012057%2C1022048%2C1006984%2C1382050%2C1032024%2C1082232%2C1102172%2C1092064%2C46801%2C25606%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "scrabbit": {
-    "job": "F/P Arch Mage",
-    "level": "225",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073371%2C0%2C1054524%2C1012632%2C1022285%2C1006960%2C1703751%2C1032316%2C1082232%2C1103890%2C1092057%2C61637%2C28044%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "Tork": {
-    "job": "Blaze Wizard",
-    "level": "262",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2010/0%2C0%2C1053971%2C1012057%2C1022048%2C1007072%2C1382104%2C1032024%2C1082102%2C1103186%2C1092064%2C47071%2C54051%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "okdy": {
-    "job": "Bishop",
-    "level": "257",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073876%2C0%2C1050879%2C1012057%2C1022048%2C1007009%2C1703802%2C1032316%2C1082102%2C1103875%2C1092064%2C60256%2C25606%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "sunbaedy": {
-    "job": "Bow Master",
-    "level": "227",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1073864%2C0%2C1054571%2C1012057%2C1022048%2C1006903%2C1703718%2C1032316%2C1082232%2C1103186%2C0%2C43587%2C28072%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "Chageee": {
-    "job": "Bow Master",
-    "level": "254",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2000/0%2C0%2C1053848%2C1012057%2C1022278%2C1006006%2C1703231%2C1032316%2C1082236%2C1103455%2C0%2C49010%2C26896%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "Arun": {
-    "job": "Dawn Warrior",
-    "level": "250",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2000/1071237%2C0%2C1051649%2C1012057%2C1022048%2C1002186%2C1703170%2C1032024%2C1082102%2C1103402%2C1092064%2C67690%2C28027%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "Afersie": {
-    "job": "Bishop",
-    "level": "234",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072153%2C0%2C1052142%2C1012057%2C1022048%2C1006446%2C1703480%2C1032024%2C1082232%2C1102039%2C1092064%2C30260%2C20603%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "wookimo": {
-    "job": "Blade Master",
-    "level": "218",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/1072153%2C1060107%2C1053301%2C1012057%2C1022048%2C1006439%2C1703480%2C1032024%2C1082102%2C1103688%2C1342069%2C36450%2C20076%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "Tokk": {
-    "job": "Buccaneer",
-    "level": "216",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2010/0%2C0%2C1054132%2C1012057%2C1022048%2C1006453%2C1703162%2C1032059%2C1082232%2C0%2C0%2C34130%2C26091%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "Seub": {
-    "job": "Blaze Wizard",
-    "level": "156",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2003/0%2C0%2C1054643%2C1012057%2C1022048%2C1005839%2C1703813%2C1032024%2C1082232%2C1102042%2C1092064%2C67470%2C26054%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   },
   "TypeR": {
-    "job": "Hermit",
-    "level": "115",
-    "image": "https://api.dreamms.gg/api/gms/latest/character/2010/1072171%2C0%2C1040002%2C0%2C0%2C1002798%2C1472055%2C1032061%2C0%2C1102839%2C0%2C45230%2C23086%2C/jump/&renderMode=Centered&resize=1"
+    "job": "",
+    "level": "",
+    "image": ""
   }
 }
